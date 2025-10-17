@@ -3,31 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wizard Life</title>
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-
-        body {
-            background: url('/icons/clovedance.gif') no-repeat center center;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: sans-serif;
-            color: white;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
-        }
-
-        h1 {
-            font-size: 3rem;
-            text-align: center;
-        }
-    </style>
+    <title>Wizard Life Wiki</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="icons/icon.png">
 </head>
 <body>
-    <h1>WizardLife Wiki Coming Soon!</h1>
+    <div class="wiki-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="icons/logo-horizontal-transparent.png" alt="Wizard Life Logo" class="logo">
+                <button class="toggle-btn" id="toggleBtn">☰</button>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search wiki..." class="search-input">
+            </div>
+            <div class="nav-content" id="navContent">
+                <!-- Navigation will be populated by JavaScript -->
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content" id="mainContent">
+            <div class="content-header">
+                <h1 id="pageTitle">Welcome to Wizard Life Wiki</h1>
+            </div>
+            <div class="content-body" id="contentBody">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <script src="wiki-content.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
