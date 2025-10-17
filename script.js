@@ -276,17 +276,6 @@
                 this.style.transform = 'translateY(0) scale(1) rotateZ(0deg)';
             });
         });
-
-        // Add floating animation to info boxes
-        contentBody.querySelectorAll('.info-box').forEach(box => {
-            let floatDirection = 1;
-            setInterval(() => {
-                const currentTransform = box.style.transform || 'translateY(0px)';
-                const currentY = parseFloat(currentTransform.match(/-?\d+/) || 0);
-                floatDirection = currentY > 5 ? -1 : currentY < -5 ? 1 : floatDirection;
-                box.style.transform = `translateY(${currentY + floatDirection}px)`;
-            }, 50);
-        });
     }
 
     // Load Page from URL Hash

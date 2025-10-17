@@ -526,7 +526,7 @@ body::after {
     position: relative;
     overflow: hidden;
     box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
-    animation: fadeInUp 0.8s ease-out;
+    animation: fadeInUp 0.8s ease-out, floatGentle 6s ease-in-out infinite;
 }
 
 .info-box::before {
@@ -725,6 +725,15 @@ body::after {
     }
 }
 
+@keyframes floatGentle {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
 @keyframes pulse {
     0%, 100% {
         opacity: 1;
@@ -756,6 +765,11 @@ body::after {
     to {
         transform: rotate(360deg);
     }
+}
+
+/* Animate-in class for scroll-triggered animations */
+.animate-in {
+    animation: fadeInUp 0.8s ease-out !important;
 }
 
 /* Reduced motion support */
