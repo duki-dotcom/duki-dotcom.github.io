@@ -91,9 +91,18 @@ wizard-life-wiki/
 2. **Core Concepts**
    - Magic System
    - Spells & Incantations
-   - Potion Brewing
 
-3. **Resources**
+3. **Spells** (33 Individual Spell Pages)
+   - Aguamenti, Anteoculatia, Apparate, Ascendio, Ascendre
+   - Avada Kedavra, Avifors, Bubblify, Crucio, Eat Slugs
+   - Enlargo, Episkey, Everte Statum, Expecto Patronum, Expelliarmus
+   - Expulso, Glacious, Homenum Revelio, Imperio, Incendio
+   - Levicorpus, Lumos, Normalo, Nox, Orbis
+   - Orchideous, Periculum, Presentus, Reducio, Rockifors
+   - Sectumsempra, Stupefy, Tarantallegra
+   - Each spell page includes description, spell details, effects, and image placeholder
+
+4. **Resources**
    - Image Gallery (showcasing all logos)
    - Community
    - Contributing
@@ -180,6 +189,10 @@ All animations and effects work perfectly on GitHub Pages with no build process 
 - `.animate-in` - Scroll-triggered fade-in effect
 
 ## Recent Changes
+- 2025-10-17: Enhanced glass UI with more prominent frosted effects (rgba backgrounds, backdrop-filter blur)
+- 2025-10-17: Removed constant logo floating animation, added hover scale effect only
+- 2025-10-17: Added 33 individual spell pages with detailed content and image placeholders
+- 2025-10-17: Removed Potion Brewing page from navigation and content
 - 2025-10-17: Complete aesthetic redesign with glass UI
 - 2025-10-17: Added CSS animations and scroll triggers
 - 2025-10-17: Implemented glassmorphism throughout
