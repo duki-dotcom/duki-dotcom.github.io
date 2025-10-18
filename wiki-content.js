@@ -67,62 +67,68 @@ const wikiContent = {
         }
     ],
 
-    pages: {
-    home: {
-        title: "Welcome to Wizard Life Wiki",
-        content: `
-        <div class="info-box">
-            <h3>🎉 Welcome, Aspiring Wizard!</h3>
-            <p>This wiki is your guide to Wizard Life. Explore spells, classes, and survive!</p>
-        </div>
+pages: {
+  home: {
+    title: "Welcome to Wizard Life Wiki",
+    content: `
+      <div class="info-box">
+          <h3>🎉 Welcome, Aspiring Wizard!</h3>
+          <p>This wiki is your guide to Wizard Life. Explore spells, classes, and survive!</p>
+      </div>
 
-        <h2>What is Wizard Life?</h2>
-        <p>Wizard Life is a magical universe where wizards, witches, and magical creatures coexist in harmony. Whether you're a novice spellcaster or an old player, this wiki has something for everyone.</p>
+      <h2>What is Wizard Life?</h2>
+      <p>Wizard Life is a magical universe where wizards, witches, and magical creatures coexist in harmony. Whether you're a novice spellcaster or an old player, this wiki has something for everyone.</p>
 
-        <h2>Quick Navigation</h2>
-        <ul>
-            <li><strong>Getting Started:</strong> New to wizardry? Start with our Quick Start Guide</li>
-            <li><strong>Core Concepts:</strong> Learn about magic systems and spells</li>
-            <li><strong>Spells:</strong> Discover 33 powerful spells with detailed descriptions</li>
-            <li><strong>Resources:</strong> Browse our gallery</li>
-        </ul>
+      <h2>Quick Navigation</h2>
+      <ul>
+          <li><strong>Getting Started:</strong> New to wizardry? Start with our Quick Start Guide</li>
+          <li><strong>Core Concepts:</strong> Learn about magic systems and spells</li>
+          <li><strong>Spells:</strong> Discover 33 powerful spells with detailed descriptions</li>
+          <li><strong>Resources:</strong> Browse our gallery</li>
+      </ul>
 
-        <h2>Updates</h2>
-        <p>Since Wizard Life is abandoned, there will be no updates!</p>
+      <h2>Updates</h2>
+      <p>Since Wizard Life is abandoned, there will be no updates!</p>
 
-        <h2>Support our Wiki</h2>
-        <div id="kofi-widget"></div>
-        `,
-        onRender: function() {
-        const script = document.createElement("script");
-        script.src = "https://storage.ko-fi.com/cdn/widget/Widget_2.js";
-        script.onload = function() {
-            kofiwidget2.init('Support WL Wiki!', '#764ba2', 'V7V51MZFGO');
-            kofiwidget2.draw();
-        };
-        document.body.appendChild(script);
-        }
-    },
+      <h2>Support our Wiki</h2>
+      <div id="kofi-widget"></div>
+    `,
+    onRender: function() {
+      if (window.kofiwidget2) {
+        kofiwidget2.init('Support WL Wiki!', '#764ba2', 'V7V51MZFGO');
+        kofiwidget2.draw();
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = "https://storage.ko-fi.com/cdn/widget/Widget_2.js";
+      script.onload = function() {
+        kofiwidget2.init('Support WL Wiki!', '#764ba2', 'V7V51MZFGO');
+        kofiwidget2.draw();
+      };
+      document.body.appendChild(script);
+    }
+  },
+
+  about: {
+    title: "About Wizard Life",
+    content: `
+      <h2>The Story Behind Wizard Life</h2>
+      <p>Wizard Life is a game by Edd_E and Rylock, made in 2017. It was abandoned in 2022, and will no longer receive updates.</p>
+
+      <img src="icons/logo-horizontal-transparent.png" alt="Wizard Life Banner" style="width: 100%; max-width: 600px; display: block; margin: 2rem auto;">
+
+      <h2>New Game</h2>
+      <p>Eddie and Rylock now have a new game called "Wizard West". Check it out!</p>
+
+      <div class="info-box">
+          <h3>Note:</h3>
+          <p>This is not an official site owned by Edd_E or Rylock. It is simply a fan-made and hosted wiki.</p>
+      </div>
+    `
+  },
 
 
-
-        about: {
-            title: "About Wizard Life",
-            content: `
-                <h2>The Story Behind Wizard Life</h2>
-                <p>Wizard Life is a game by Edd_E and Rylock, made in 2017. It was abandoned in 2022, and will no longer recieve updates.</p>
-
-                <img src="icons/logo-horizontal-transparent.png" alt="Wizard Life Banner" style="width: 100%; max-width: 600px; display: block; margin: 2rem auto;">
-
-                <h2>New Game</h2>
-                <p>Eddie and Rylock now have a new game called "Wizard West". Check it out!</p>
-
-                <div class="info-box">
-                    <h3>Note:</h3>
-                    <p>This is not an official site owned by Edd_E or Rylock. It is simply a fan-made and hosted wiki.</p>
-                </div>
-            `
-        },
 
         quickstart: {
             title: "Quick Start Guide",
