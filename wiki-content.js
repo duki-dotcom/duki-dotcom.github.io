@@ -89,25 +89,7 @@ pages: {
 
       <h2>Updates</h2>
       <p>Since Wizard Life is abandoned, there will be no updates!</p>
-
-      <h2>Support our Wiki</h2>
-      <div id="kofi-widget"></div>
     `,
-    onRender: function() {
-      if (window.kofiwidget2) {
-        kofiwidget2.init('Support WL Wiki!', '#764ba2', 'V7V51MZFGO');
-        kofiwidget2.draw();
-        return;
-      }
-
-      const script = document.createElement("script");
-      script.src = "https://storage.ko-fi.com/cdn/widget/Widget_2.js";
-      script.onload = function() {
-        kofiwidget2.init('Support WL Wiki!', '#764ba2', 'V7V51MZFGO');
-        kofiwidget2.draw();
-      };
-      document.body.appendChild(script);
-    }
   },
 
   about: {

@@ -31,18 +31,26 @@
             <div class="content-body" id="contentBody">
                 <!-- Content will be populated by JavaScript -->
             </div>
+
+            <!-- 🪄 Embedded Ko-fi Widget -->
+            <section id="supportSection" style="text-align: center; margin: 3rem 0;">
+                <h2>Support Wizard Life Wiki 💖</h2>
+                <p>If you’d like to help keep this fan wiki online, consider supporting us on Ko-fi!</p>
+                <div id="kofi-container" style="margin-top: 1.5rem;"></div>
+            </section>
         </main>
     </div>
 
-    <!-- Your existing scripts -->
+    <!-- JS Scripts -->
     <script src="wiki-content.js"></script>
     <script src="script.js"></script>
 
-    <!-- 🪄 Ko-fi Floating Widget -->
+    <!-- Ko-fi Widget Script -->
     <script src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
     <script>
+      // Initialize Ko-fi widget in the specific container (not floating)
       kofiwidget2.init('Support WL Wiki!', '#764ba2', 'V7V51MZFGO');
-      kofiwidget2.draw();
+      kofiwidget2.draw('kofi-container');
     </script>
 </body>
 </html>
