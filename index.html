@@ -1,73 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wizard Life Wiki</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="icons/icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wizard Life Wiki</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="icons/icon.png" />
 </head>
 <body>
-    <div class="wiki-container">
-        <!-- Sidebar Navigation -->
-        <nav class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <img src="icons/logo-horizontal-transparent.png" alt="Wizard Life Logo" class="logo">
-                <button class="toggle-btn" id="toggleBtn">☰</button>
-            </div>
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search wiki..." class="search-input">
-            </div>
-            <div class="nav-content" id="navContent">
-                <!-- Navigation will be populated by JavaScript -->
-            </div>
-        </nav>
+  <div class="wiki-container">
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img src="icons/logo-horizontal-transparent.png" alt="Wizard Life Logo" class="logo" />
+        <button class="toggle-btn" id="toggleBtn">☰</button>
+      </div>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search wiki..." class="search-input" />
+      </div>
+      <div class="nav-content" id="navContent">
+        <!-- Navigation will be populated by JavaScript -->
+      </div>
+    </nav>
 
-        <!-- Main Content Area -->
-        <main class="content" id="mainContent">
-            <div class="content-header">
-                <h1 id="pageTitle">Welcome to Wizard Life Wiki</h1>
-            </div>
-            <div class="content-body" id="contentBody">
-                <!-- Content will be populated by JavaScript -->
-            </div>
+    <!-- Main Content Area -->
+    <main class="content" id="mainContent">
+      <div class="content-header">
+        <h1 id="pageTitle">Welcome to Wizard Life Wiki</h1>
+      </div>
+      <div class="content-body" id="contentBody">
+        <!-- Content will be populated by JavaScript -->
+      </div>
 
-            <!-- 🪄 Embedded Ko-fi Widget -->
-            <section id="supportSection" style="text-align: center; margin: 3rem 0;">
-                <h2>Support Wizard Life Wiki 💖</h2>
-                <p>If you’d like to help keep this fan wiki online, consider supporting us on Ko-fi!</p>
-                <div id="kofi-container" style="margin-top: 1.5rem;"></div>
-            </section>
-        </main>
-    </div>
-
-    <!-- JS Scripts -->
-    <script src="wiki-content.js"></script>
-    <script src="script.js"></script>
-
-    <!-- Ko-fi Widget Loader -->
-    <!-- 🪄 Embedded Ko-fi Widget -->
-    <section id="supportSection" style="text-align: center; margin: 3rem 0;">
+      <!-- 🪄 Embedded Ko-fi Support Section -->
+      <section id="supportSection" style="text-align:center; margin:3rem 0;">
         <h2>Support Wizard Life Wiki 💖</h2>
         <p>If you’d like to help keep this fan wiki online, consider supporting us on Ko-fi!</p>
-        <div id="kofi-container" style="margin-top: 1.5rem;"></div>
-    </section>
+        <iframe 
+          id="kofi-embed"
+          src="https://ko-fi.com/V7V51MZFGO/?hidefeed=true&widget=true&embed=true&preview=true"
+          style="border:none; width:100%; max-width:340px; height:400px; margin-top:1.5rem;"
+          title="Support Wizard Life Wiki on Ko-fi">
+        </iframe>
+      </section>
+    </main>
+  </div>
 
-    <!-- Safe Ko-fi Widget Script -->
-    <script>
-      window.addEventListener("DOMContentLoaded", function() {
-        const script = document.createElement("script");
-        script.src = "https://storage.ko-fi.com/cdn/widget/Widget_2.js";
-        script.onload = function() {
-          // Use the container ID explicitly to avoid overwriting the whole page
-          if (window.kofiwidget2) {
-            kofiwidget2.init('Support WL Wiki!', '#764ba2', 'V7V51MZFGO');
-            kofiwidget2.draw('kofi-container'); // ⬅ this ensures it stays inside your section
-          }
-        };
-        document.body.appendChild(script);
-      });
-    </script>
-
+  <!-- JS scripts -->
+  <script src="wiki-content.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
