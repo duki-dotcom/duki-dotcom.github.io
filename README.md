@@ -1,7 +1,7 @@
 # Wizard Life Wiki
 
 ## Overview
-A stunning, modern static wiki website for Wizard Life featuring glassmorphism UI, smooth animations, and beautiful aesthetic design. Built with pure HTML, CSS, and JavaScript - fully optimized for GitHub Pages deployment.
+A modern static wiki website for Wizard Life featuring glassmorphism UI, smooth animations, and aesthetic design. Built with pure HTML, CSS, and JavaScript - optimized for GitHub Pages deployment.
 
 ## Project Structure
 ```
@@ -9,8 +9,7 @@ wizard-life-wiki/
 ├── index.html          # Main HTML structure with layered backgrounds
 ├── styles.css          # Glass UI design with animations and effects
 ├── script.js           # Navigation, search, and scroll-triggered animations
-├── wiki-content.js     # Modular content structure (easy to add pages)
-├── server.py           # Python dev server (Replit only, not needed for GitHub Pages)
+├── wiki-content.js     # Modular content structure
 ├── icons/              # Logo and image assets
 │   ├── logo-horizontal-transparent.png
 │   ├── logo-horizontal-bw.png
@@ -18,7 +17,7 @@ wizard-life-wiki/
 │   ├── logo-square-bw.png
 │   ├── icon-transparent.png
 │   └── icon.png
-└── CNAME              # GitHub Pages custom domain (www.wizardlife.online)
+└── CNAME              # www.wizardlife.online
 ```
 
 ## Technology Stack
