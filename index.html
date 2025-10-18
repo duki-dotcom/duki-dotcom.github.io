@@ -46,17 +46,28 @@
     <script src="script.js"></script>
 
     <!-- Ko-fi Widget Loader -->
+    <!-- 🪄 Embedded Ko-fi Widget -->
+    <section id="supportSection" style="text-align: center; margin: 3rem 0;">
+        <h2>Support Wizard Life Wiki 💖</h2>
+        <p>If you’d like to help keep this fan wiki online, consider supporting us on Ko-fi!</p>
+        <div id="kofi-container" style="margin-top: 1.5rem;"></div>
+    </section>
+
+    <!-- Safe Ko-fi Widget Script -->
     <script>
-      // Load the widget script dynamically AFTER the page has loaded
       window.addEventListener("DOMContentLoaded", function() {
         const script = document.createElement("script");
         script.src = "https://storage.ko-fi.com/cdn/widget/Widget_2.js";
         script.onload = function() {
-          kofiwidget2.init('Support WL Wiki!', '#764ba2', 'V7V51MZFGO');
-          kofiwidget2.draw('kofi-container');
+          // Use the container ID explicitly to avoid overwriting the whole page
+          if (window.kofiwidget2) {
+            kofiwidget2.init('Support WL Wiki!', '#764ba2', 'V7V51MZFGO');
+            kofiwidget2.draw('kofi-container'); // ⬅ this ensures it stays inside your section
+          }
         };
         document.body.appendChild(script);
       });
     </script>
+
 </body>
 </html>
