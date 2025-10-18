@@ -68,29 +68,43 @@ const wikiContent = {
     ],
 
     pages: {
-        home: {
-            title: "Welcome to Wizard Life Wiki",
-            content: `
-                <div class="info-box">
-                    <h3>🎉 Welcome, Aspiring Wizard!</h3>
-                    <p>This wiki is your guide to Wizard Life. Explore spells, classes, and survive!</p>
-                </div>
+    home: {
+        title: "Welcome to Wizard Life Wiki",
+        content: `
+        <div class="info-box">
+            <h3>🎉 Welcome, Aspiring Wizard!</h3>
+            <p>This wiki is your guide to Wizard Life. Explore spells, classes, and survive!</p>
+        </div>
 
-                <h2>What is Wizard Life?</h2>
-                <p>Wizard Life is a magical universe where wizards, witches, and magical creatures coexist in harmony. Whether you're a novice spellcaster or a an old player, this wiki has something for everyone.</p>
+        <h2>What is Wizard Life?</h2>
+        <p>Wizard Life is a magical universe where wizards, witches, and magical creatures coexist in harmony. Whether you're a novice spellcaster or an old player, this wiki has something for everyone.</p>
 
-                <h2>Quick Navigation</h2>
-                <ul>
-                    <li><strong>Getting Started:</strong> New to wizardry? Start with our Quick Start Guide</li>
-                    <li><strong>Core Concepts:</strong> Learn about magic systems and spells</li>
-                    <li><strong>Spells:</strong> Discover 33 powerful spells with detailed descriptions</li>
-                    <li><strong>Resources:</strong> Browse our gallery</li>
-                </ul>
+        <h2>Quick Navigation</h2>
+        <ul>
+            <li><strong>Getting Started:</strong> New to wizardry? Start with our Quick Start Guide</li>
+            <li><strong>Core Concepts:</strong> Learn about magic systems and spells</li>
+            <li><strong>Spells:</strong> Discover 33 powerful spells with detailed descriptions</li>
+            <li><strong>Resources:</strong> Browse our gallery</li>
+        </ul>
 
-                <h2>Latest Updates</h2>
-                <p>Stay tuned for the latest magical discoveries and community contributions!</p>
-            `
-        },
+        <h2>Updates</h2>
+        <p>Since Wizard Life is abandoned, there will be no updates!</p>
+
+        <h2>Support our Wiki</h2>
+        <div id="kofi-widget"></div>
+        `,
+        onRender: function() {
+        const script = document.createElement("script");
+        script.src = "https://storage.ko-fi.com/cdn/widget/Widget_2.js";
+        script.onload = function() {
+            kofiwidget2.init('Support WL Wiki!', '#764ba2', 'V7V51MZFGO');
+            kofiwidget2.draw();
+        };
+        document.body.appendChild(script);
+        }
+    },
+
+
 
         about: {
             title: "About Wizard Life",
@@ -145,7 +159,7 @@ const wikiContent = {
                 </ul>
 
                 <h2>Still need help?</h2>
-                <p>Contact @dukidokii or @clove.com on Discord for help!</p>
+                <p>Contact @dukidokii or @nyxises on Discord for help!</p>
             `
         },
 
