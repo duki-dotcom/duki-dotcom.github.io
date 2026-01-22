@@ -1,53 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wizard Life Wiki</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" type="image/png" href="icons/icon.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wizard Life | Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #1a1a2e;
+            --primary-grad: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-grad: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-dim: #b0b0d1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- Animated Gradient Background --- */
+        .bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #1a1a2e);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- Particles --- */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* --- Sidebar Navigation --- */
+        .sidebar {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            bottom: 20px;
+            width: 260px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            z-index: 100;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            animation: slideInLeft 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            max-width: 180px;
+            filter: drop-shadow(0 0 10px rgba(118, 75, 162, 0.5));
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-item {
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-dim);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: var(--glass-border);
+            transform: translateX(5px);
+        }
+
+        .nav-item.accent {
+            background: var(--primary-grad);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            margin-left: 300px;
+            padding: 60px;
+            min-height: 200vh; /* For scroll testing */
+        }
+
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 20px;
+            background: var(--accent-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 40px;
+            animation: fadeIn 2s ease;
+        }
+
+        /* --- Glass Cards --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .glass-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(240, 147, 251, 0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        /* --- Animations --- */
+        @keyframes slideInLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Pulsing Glow Effect */
+        .glow-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glow-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            animation: pulseGlow 4s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+
+        /* Floating Animation */
+        .float {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
 </head>
 <body>
-  <div class="wiki-container">
-    <!-- Sidebar Navigation -->
-    <nav class="sidebar" id="sidebar">
-      <div class="sidebar-header">
-        <img src="icons/logo-horizontal-transparent.png" alt="Wizard Life Logo" class="logo" />
-        <button class="toggle-btn" id="toggleBtn">☰</button>
-      </div>
-      <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search wiki..." class="search-input" />
-      </div>
-      <div class="nav-content" id="navContent">
-        <!-- Navigation will be populated by JavaScript -->
-      </div>
-    </nav>
 
-    <!-- Main Content Area -->
-    <main class="content" id="mainContent">
-      <div class="content-header">
-        <h1 id="pageTitle">Welcome to Wizard Life Wiki</h1>
-      </div>
-      <div class="content-body" id="contentBody">
-        <!-- Content will be populated by JavaScript -->
-      </div>
+    <div class="bg-canvas"></div>
+    <div id="particles-js"></div>
 
-      <!-- 🪄 Embedded Ko-fi Support Section -->
-      <section id="supportSection" style="text-align:center; margin:3rem 0;">
-        <h2>Support Wizard Life Wiki 💖</h2>
-        <p>If you’d like to help keep this fan wiki online, consider supporting us on Ko-fi!</p>
-        <iframe 
-          id="kofi-embed"
-          src="https://ko-fi.com/V7V51MZFGO/?hidefeed=true&widget=true&embed=true&preview=true"
-          style="border:none; width:100%; max-width:340px; height:400px; margin-top:1.5rem;"
-          title="Support Wizard Life Wiki on Ko-fi">
-        </iframe>
-      </section>
+    <aside class="sidebar">
+        <div class="logo-container">
+            <img src="wizard-life-wiki/icons/logo-horizontal-transparent.png" alt="Wizard Life Logo">
+        </div>
+        
+        <nav class="nav-links">
+            <a href="#" class="nav-item active">
+                <span>🏠</span> Home
+            </a>
+            <a href="calculator" class="nav-item accent">
+                <span>🧪</span> Calculator
+            </a>
+            <a href="#" class="nav-item">
+                <span>📚</span> Wiki
+            </a>
+            <a href="#" class="nav-item">
+                <span>🎮</span> Game Page
+            </a>
+            <a href="#" class="nav-item">
+                <span>💬</span> Discord
+            </a>
+        </nav>
+
+        <div style="margin-top: auto; font-size: 0.8rem; color: var(--text-dim); text-align: center;">
+            v1.0.4 | Created for the Community
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <section class="hero" id="hero">
+            <h1 class="hero-title float">WIZARD LIFE</h1>
+            <p class="hero-subtitle">
+                The official hub for Edd_E and Rylock's magical universe. Access tools, guides, and community resources all in one place.
+            </p>
+            <div style="display: flex; gap: 20px;">
+                <button class="nav-item accent glow-button" style="padding: 15px 40px; cursor: pointer; border: none; font-weight: bold;">
+                    LAUNCH CALCULATOR
+                </button>
+            </div>
+        </section>
+
+        <div class="card-grid">
+            <div class="glass-card">
+                <h3 style="margin-bottom: 10px; color: #f093fb;">Potions Mastery</h3>
+                <p style="color: var(--text-dim); font-size: 0.9rem;">The most advanced brewing calculator for all current game versions.</p>
+            </div>
+            <div class="glass-card">
+                <h3 style="margin-bottom: 10px; color: #667eea;">Spell Tome</h3>
+                <p style="color: var(--text-dim); font-size: 0.9rem;">Complete database of incantations, requirements, and locations.</p>
+            </div>
+            <div class="glass-card">
+                <h3 style="margin-bottom: 10px; color: #f5576c;">Recent Updates</h3>
+                <p style="color: var(--text-dim); font-size: 0.9rem;">Check the latest patches and changes made by Edd_E and Rylock.</p>
+            </div>
+        </div>
     </main>
-  </div>
 
-  <!-- JS scripts -->
-  <script src="wiki-content.js"></script>
-  <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // 1. Initialize Particles
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#f093fb" },
+                shape: { type: "circle" },
+                opacity: { value: 0.3, random: true },
+                size: { value: 3, random: true },
+                move: { enable: true, speed: 1, direction: "none", random: true, out_mode: "out" }
+            }
+        });
+
+        // 2. Intersection Observer for Scroll Animations
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-card').forEach(card => observer.observe(card));
+
+        // 3. Mouse Parallax Effect for Hero
+        const hero = document.getElementById('hero');
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+            hero.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    </script>
 </body>
 </html>
