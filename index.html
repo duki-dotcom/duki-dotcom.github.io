@@ -158,11 +158,15 @@
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 25px;
-            background: #fff;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+            color: #fff; /* fallback */
+
             background-image: linear-gradient(to bottom, #fff, #9494b8);
+            background-clip: text;           /* standard (for linting / future support) */
+            -webkit-background-clip: text;   /* required today */
+            -webkit-text-fill-color: transparent;
         }
+
 
         .hero-subtitle {
             font-size: 1.25rem;
