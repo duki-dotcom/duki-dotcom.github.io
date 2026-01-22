@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Points Calculator | Duki's Scripts</title>
+    <style>
+        /* [Insert the CSS from the Galleon code here to keep it identical] */
+        /* Plus this one addition for the dropdown: */
+        select {
+            width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: white; font-size: 1.1rem; outline: none;
+        }
+        option { background: #1a1a2e; }
+    </style>
+</head>
+<body>
+    <main class="main-content">
+        <div class="calc-card">
+            <h1 style="margin-bottom: 10px;">Points Calculator</h1>
+            <p style="color: var(--text-dim); margin-bottom: 30px;">Track your claim cycles.</p>
+
+            <div class="input-group">
+                <label>Current Points</label>
+                <input type="number" id="currPoints" placeholder="0">
+            </div>
+            <div class="input-group">
+                <label>Target Points</label>
+                <input type="number" id="targetPoints" placeholder="35000">
+            </div>
+            <div class="input-group">
+                <label>Last Claim Stage</label>
+                <select id="lastStage">
+                    <option value="0">Fresh Cycle (Start at 100)</option>
+                    <option value="1">Just claimed 100</option>
+                    <option value="2">Just claimed 170</option>
+                    <option value="3">Just claimed 250</option>
+                    <option value="4">Just claimed 400</option>
+                    <option value="5">Just claimed 700</option>
+                </select>
+            </div>
+
+            <div id="resBox" class="result-box">
+                <span class="result-title" id="pointsTime">--</span>
+                <p id="pointsDetail" style="font-size: 0.9rem; color: var(--text-dim); margin-top: 5px;"></p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const POINT_CYCLE = [100, 170, 250, 400, 700];
+        const pInputs = [document.getElementById('currPoints'), document.getElementById('targetPoints'), document.getElementById('lastStage')];
+
+        function calcPoints() {
+            const current = parseInt(pInputs[0].value) || 0;
+            const target = parseInt(pInputs[1].value) || 0;
+            let currentIdx = parseInt(pInputs[2].value);
+            const resBox = document.getElementById('resBox');
+
+            if (target > current) {
+                let runningTotal = current;
+                let claimsCount = 0;
+
+                while (runningTotal < target) {
+                    runningTotal += POINT_CYCLE[currentIdx % 5];
+                    claimsCount++;
+                    currentIdx++;
+                }
+
+                const totalHours = claimsCount * 18;
+                const days = Math.floor(totalHours / 24);
+                const hrs = totalHours % 24;
+
+                resBox.style.display = 'block';
+                document.getElementById('pointsTime').innerText = `${days}d ${hrs}h Required`;
+                document.getElementById('pointsDetail').innerText = `${claimsCount} claims needed. Final balance: ${runningTotal.toLocaleString()}`;
+            } else {
+                resBox.style.display = 'none';
+            }
+        }
+
+        pInputs.forEach(i => i.addEventListener('input', calcPoints));
+    </script>
+</body>
+</html>
