@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galleon Calculator | Duki's Scripts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- COPY THE CSS FROM YOUR HUB PAGE HERE --- */
+        :root {
+            --bg-dark: #1a1a2e;
+            --primary-grad: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-grad: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-dim: #9494b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); overflow-x: hidden; min-height: 100vh; }
+        .bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0f0f1a 100%); }
+        .gradient-sphere { position: fixed; width: 600px; height: 600px; background: var(--primary-grad); filter: blur(150px); border-radius: 50%; opacity: 0.15; z-index: -1; animation: rotate 20s linear infinite; }
+        @keyframes rotate { from { transform: translate(-10%, -10%) rotate(0deg); } to { transform: translate(10%, 10%) rotate(360deg); } }
+        #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; }
+        .sidebar { position: fixed; left: 20px; top: 20px; bottom: 20px; width: 280px; background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 28px; z-index: 100; padding: 40px 20px; display: flex; flex-direction: column; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8); }
+        .logo-container { text-align: center; margin-bottom: 50px; }
+        .logo-container img { max-width: 200px; }
+        .nav-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .nav-item { padding: 16px 20px; border-radius: 16px; text-decoration: none; color: var(--text-dim); transition: 0.3s; display: flex; align-items: center; gap: 15px; font-weight: 500; }
+        .nav-item:hover { background: rgba(255, 255, 255, 0.05); color: #fff; }
+        .nav-item.active { background: var(--primary-grad); color: white; }
+        .main-content { margin-left: 320px; padding: 80px; max-width: 1200px; }
+
+        /* --- CALCULATOR SPECIFIC CSS --- */
+        .calc-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 500px;
+        }
+        .input-group { margin-bottom: 25px; }
+        label { display: block; margin-bottom: 10px; color: var(--text-dim); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        input[type="number"] {
+            width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: white; font-size: 1.1rem; outline: none;
+        }
+        .vip-toggle { display: flex; align-items: center; gap: 15px; cursor: pointer; }
+        .result-box {
+            margin-top: 30px; padding: 20px; border-radius: 16px; background: rgba(240, 147, 251, 0.1); border: 1px solid rgba(240, 147, 251, 0.2); display: none;
+        }
+        .result-title { color: #f093fb; font-size: 1.5rem; font-weight: 800; display: block; }
+    </style>
+</head>
+<body>
+    <div class="bg-canvas"></div>
+    <div class="gradient-sphere"></div>
+    <div id="particles-js"></div>
+
+    <aside class="sidebar">
+        <div class="logo-container"><img src="../../icons/logo-horizontal-transparent.png" alt="Logo"></div>
+        <nav class="nav-links">
+            <a href="/" class="nav-item"><span>🏠</span> Home</a>
+            <a href="/calculator" class="nav-item active"><span>💰</span> Calculators</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="calc-card">
+            <h1 style="margin-bottom: 10px;">Galleon Calculator</h1>
+            <p style="color: var(--text-dim); margin-bottom: 30px;">Time to reach your goal.</p>
+
+            <div class="input-group">
+                <label>Current Galleons</label>
+                <input type="number" id="current" placeholder="0">
+            </div>
+            <div class="input-group">
+                <label>Target Galleons</label>
+                <input type="number" id="target" placeholder="50000">
+            </div>
+            <div class="input-group">
+                <label class="vip-toggle">
+                    <input type="checkbox" id="isVip"> Do you have VIP?
+                </label>
+            </div>
+
+            <div id="result" class="result-box">
+                <span class="result-title" id="timeRes">--</span>
+                <p id="detailRes" style="font-size: 0.9rem; color: var(--text-dim); margin-top: 5px;"></p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const inputs = [document.getElementById('current'), document.getElementById('target'), document.getElementById('isVip')];
+        
+        function calculate() {
+            const current = parseInt(inputs[0].value) || 0;
+            const target = parseInt(inputs[1].value) || 0;
+            const isVip = inputs[2].checked;
+            const resultBox = document.getElementById('result');
+
+            if (target > current) {
+                const needed = target - current;
+                const rate = isVip ? 45 : 15;
+                const intervals = Math.ceil(needed / rate);
+                const totalMinutes = intervals * 5;
+                const hours = Math.floor(totalMinutes / 60);
+                const mins = totalMinutes % 60;
+
+                resultBox.style.display = 'block';
+                document.getElementById('timeRes').innerText = `${hours}h ${mins}m Wait`;
+                document.getElementById('detailRes').innerText = `Needed: ${needed.toLocaleString()} Galleons (${intervals} cycles)`;
+            } else {
+                resultBox.style.display = 'none';
+            }
+        }
+
+        inputs.forEach(i => i.addEventListener('input', calculate));
+    </script>
+</body>
+</html>
