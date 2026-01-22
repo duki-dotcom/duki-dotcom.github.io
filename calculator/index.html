@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duki's Scripts | Wizard Life Hub</title>
+    <title>Calculators | Duki's Scripts</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -133,93 +133,99 @@
             max-width: 1200px;
         }
 
-        .hero {
-            opacity: 0;
-            animation: fadeIn 1s ease forwards;
-            animation-delay: 0.3s;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 6px 14px;
-            background: rgba(240, 147, 251, 0.1);
-            border: 1px solid rgba(240, 147, 251, 0.3);
-            border-radius: 100px;
-            color: #f093fb;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
         .hero-title {
-            font-size: 4.5rem;
+            font-size: 3.5rem;
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 25px;
-
-            color: #fff; /* fallback */
-
             background-image: linear-gradient(to bottom, #fff, #9494b8);
-            background-clip: text;           /* standard (for linting / future support) */
-            -webkit-background-clip: text;   /* required today */
+            background-clip: text;
+            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            color: #fff;
         }
-
 
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--text-dim);
-            max-width: 550px;
+            max-width: 600px;
             line-height: 1.6;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
-        /* --- Featured Card --- */
-        .glass-card {
+        /* --- Grid Layout for Tools --- */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .tool-card {
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
             border-radius: 24px;
             padding: 40px;
-            width: 100%;
-            max-width: 450px;
+            text-decoration: none;
+            color: inherit;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
-        .glass-card:hover {
+        .tool-card:hover {
             transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.07);
             border-color: rgba(240, 147, 251, 0.4);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
 
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: var(--accent-grad);
-            color: white;
-            padding: 14px 30px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 20px;
-            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+        .card-icon-circle {
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 25px;
             transition: 0.3s;
         }
 
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.5);
+        .tool-card:hover .card-icon-circle {
+            background: var(--primary-grad);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .card-arrow {
+            margin-top: auto;
+            color: #f093fb;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         /* --- Animations --- */
@@ -233,23 +239,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .float {
-            animation: floating 4s ease-in-out infinite;
-        }
-
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-
-        /* Kill default link colors everywhere */
-        a,
-        a:visited,
-        a:hover,
-        a:active {
-            color: inherit;
-            text-decoration: none;
-        }
     </style>
 </head>
 <body>
@@ -264,13 +253,13 @@
         </div>
         
         <nav class="nav-links">
-            <a href="/" class="nav-item active">
+            <a href="/" class="nav-item">
                 <span>🏠</span> Home
             </a>
-            <a href="/calculator" class="nav-item">
+            <a href="/calculator" class="nav-item active">
                 <span>💰</span> Galleon & Points Calc
             </a>
-            </nav>
+        </nav>
 
         <div style="margin-top: auto; padding: 20px; background: rgba(0,0,0,0.2); border-radius: 15px; font-size: 0.75rem; color: var(--text-dim); text-align: center;">
             Unofficial hub for <strong>duki's scripts</strong><br>
@@ -278,29 +267,31 @@
         </div>
     </aside>
 
-    <main class="main-content">
-        <section class="hero" id="hero-section">
-            <h1 class="hero-title">Calculators</h1>
-            <p class="hero-subtitle">Choose a currency to calculate.</p>
-            
-            <div class="card-grid">
-                <a href="/calculator/galleons" style="text-decoration: none;">
-                    <div class="glass-card">
-                        <span style="font-size: 2rem;">💰</span>
-                        <h3>Galleon Calculator</h3>
-                        <p>Calculate time needed based on VIP status.</p>
-                    </div>
-                </a>
+    <main class="main-content" id="main-section">
+        <h1 class="hero-title">Select a Tool</h1>
+        <p class="hero-subtitle">
+            Choose a calculator to help calculate goals.
+        </p>
 
-                <a href="/calculator/points" style="text-decoration: none;">
-                    <div class="glass-card">
-                        <span style="font-size: 2rem;">✨</span>
-                        <h3>Points Calculator</h3>
-                        <p>Track claim cycles and time required for goals.</p>
-                    </div>
-                </a>
-            </div>
-        </section>
+        <div class="tools-grid">
+            <a href="/calculator/galleons" class="tool-card">
+                <div class="card-icon-circle">💰</div>
+                <h2 class="card-title">Galleon Calculator</h2>
+                <p class="card-desc">
+                    Calculate how long to achieve your next spell or goal.
+                </p>
+                <div class="card-arrow">Open Calculator <span>→</span></div>
+            </a>
+
+            <a href="/calculator/points" class="tool-card">
+                <div class="card-icon-circle">✨</div>
+                <h2 class="card-title">Points</h2>
+                <p class="card-desc">
+                    Track your points gain, and calculate how many logins to achieve your goal.
+                </p>
+                <div class="card-arrow">Open Calculator <span>→</span></div>
+            </a>
+        </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -319,11 +310,11 @@
         });
 
         // Mouse Parallax Effect
-        const hero = document.getElementById('hero-section');
+        const main = document.getElementById('main-section');
         document.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth / 2 - e.pageX) / 50;
-            const y = (window.innerHeight / 2 - e.pageY) / 50;
-            hero.style.transform = `translateX(${x}px) translateY(${y}px)`;
+            const x = (window.innerWidth / 2 - e.pageX) / 80; // Slower movement for this page
+            const y = (window.innerHeight / 2 - e.pageY) / 80;
+            main.style.transform = `translateX(${x}px) translateY(${y}px)`;
         });
     </script>
 </body>
