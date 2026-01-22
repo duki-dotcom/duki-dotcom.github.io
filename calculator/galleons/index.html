@@ -3,9 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galleon Calculator | Wizard Life Hub</title>
+    <title>Galleon Calculator | Duki's Scripts</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
+    <style>
+        :root {
+            --bg-dark: #1a1a2e;
+            --primary-grad: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-grad: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-dim: #9494b8;
+            --success: #00b894;
+            --gold: #ffd700;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; overflow-x: hidden; }
+
+        /* --- Backgrounds --- */
+        .bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0f0f1a 100%); }
+        .gradient-sphere { position: fixed; width: 600px; height: 600px; background: var(--primary-grad); filter: blur(150px); border-radius: 50%; opacity: 0.15; z-index: -1; animation: rotate 20s linear infinite; }
+        @keyframes rotate { from { transform: translate(-10%, -10%) rotate(0deg); } to { transform: translate(10%, 10%) rotate(360deg); } }
+        #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            position: fixed; left: 20px; top: 20px; bottom: 20px; width: 280px;
+            background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border); border-radius: 28px; z-index: 100;
+            padding: 40px 20px; display: flex; flex-direction: column;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+        .logo-container { text-align: center; margin-bottom: 50px; }
+        .logo-container img { max-width: 200px; transition: transform 0.3s ease; }
+        .logo-container img:hover { transform: scale(1.05); }
+        .nav-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .nav-item { padding: 16px 20px; border-radius: 16px; text-decoration: none; color: var(--text-dim); transition: 0.3s; display: flex; align-items: center; gap: 15px; font-weight: 500; border: 1px solid transparent; }
+        .nav-item:hover { background: rgba(255, 255, 255, 0.05); color: #fff; transform: translateX(8px); }
+        .nav-item.active { background: var(--primary-grad); color: white; box-shadow: 0 10px 20px rgba(118, 75, 162, 0.3); }
+
+        /* --- Main Content --- */
+        .main-content { margin-left: 320px; padding: 80px; max-width: 1000px; opacity: 0; animation: fadeIn 0.8s ease forwards; }
+        .page-header { margin-bottom: 40px; }
+        .page-title { font-size: 3rem; font-weight: 800; margin-bottom: 10px; background: linear-gradient(to right, #fff, #9494b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .page-desc { color: var(--text-dim); font-size: 1.1rem; }
+
+        /* --- Calculator Layout --- */
+        .calc-container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; }
+        
+        .input-card {
+            background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);
+            border-radius: 24px; padding: 30px;
+        }
+
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; color: var(--text-dim); margin-bottom: 10px; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .custom-input {
+            width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); color: #fff;
+            padding: 15px; border-radius: 12px; font-size: 1rem; outline: none; transition: 0.3s;
+        }
+        .custom-input:focus { border-color: #667eea; box-shadow: 0 0 15px rgba(102, 126, 234, 0.2); }
+
+        /* --- VIP Toggle Switch --- */
+        .toggle-container {
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px; border: 1px solid var(--glass-border);
+        }
+        .toggle-label { font-size: 1rem; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 10px; }
+        
+        .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #4a4a6a; transition: .4s; border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px;
+            background-color: white; transition: .4s; border-radius: 50%;
+        }
+        input:checked + .slider { background-color: #f093fb; background-image: var(--accent-grad); }
+        input:checked + .slider:before { transform: translateX(22px); }
+
+        .btn-calc {
+            width: 100%; background: var(--primary-grad); color: white; border: none; padding: 16px;
+            border-radius: 12px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(118, 75, 162, 0.4); margin-top: 10px;
+        }
+        .btn-calc:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(118, 75, 162, 0.6); }
+
+        /* --- Result Card --- */
+        .result-card {
+            background: rgba(0, 0, 0, 0.2); border: 1px solid var(--glass-border); border-radius: 24px;
+            padding: 30px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;
+        }
+        .result-item { margin-bottom: 25px; position: relative; z-index: 2; }
+        .result-label { font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .result-value { font-size: 2.5rem; font-weight: 800; color: #fff; }
+        .result-sub { font-size: 1rem; color: var(--gold); font-weight: 600; }
+        .empty-state { text-align: center; color: var(--text-dim); font-style: italic; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .calc-container { grid-template-columns: 1fr; }
+            .main-content { margin-left: 0; padding: 100px 20px 40px 20px; }
+            .sidebar { display: none; }
+        }
+    </style>
 </head>
 <body>
 
@@ -15,104 +122,130 @@
 
     <aside class="sidebar">
         <div class="logo-container">
-            <img src="/icons/logo-horizontal-transparent.png" alt="Wizard Life Logo">
+            <img src="../icons/logo-horizontal-transparent.png" alt="Wizard Life Logo">
         </div>
-        
         <nav class="nav-links">
-            <a href="/" class="nav-item">
-                <span>🏠</span> Home
-            </a>
-            <a href="/calculator" class="nav-item active">
-                <span>💰</span> Galleon & Points Calc
-            </a>
+            <a href="/" class="nav-item"><span>🏠</span> Home</a>
+            <a href="/calculator" class="nav-item active"><span>💰</span> Galleon & Points Calc</a>
         </nav>
-
         <div style="margin-top: auto; padding: 20px; background: rgba(0,0,0,0.2); border-radius: 15px; font-size: 0.75rem; color: var(--text-dim); text-align: center;">
-            Unofficial hub for <strong>duki's scripts</strong><br>
-            Game by Edd_E and Rylock
+            Unofficial hub by <strong>duki</strong>
         </div>
     </aside>
 
     <main class="main-content">
-        <section class="hero" id="hero-section">
-            <h1 class="hero-title">Galleons</h1>
-            <p class="hero-subtitle">Calculate time needed to reach your goal.</p>
+        <div class="page-header">
+            <h1 class="page-title">Galleon Calculator</h1>
+            <p class="page-desc">Calculate how long to play or AFK to reach your goal!</p>
+        </div>
 
-            <div class="glass-card calc-container">
-                <div class="input-group">
+        <div class="calc-container">
+            
+            <div class="input-card">
+                <div class="form-group">
                     <label>Current Galleons</label>
-                    <input id="current" type="number" placeholder="0">
+                    <input type="number" id="currentGalleons" class="custom-input" placeholder="e.g. 1500">
+                </div>
+                
+                <div class="form-group">
+                    <label>Target Price</label>
+                    <input type="number" id="targetGalleons" class="custom-input" placeholder="e.g. 50000">
                 </div>
 
-                <div class="input-group">
-                    <label>Target Galleons</label>
-                    <input id="target" type="number" placeholder="10000">
+                <div class="form-group">
+                    <label>Membership Status</label>
+                    <div class="toggle-container">
+                        <div class="toggle-label">
+                            <span style="font-size: 1.2rem;">💎</span> VIP / Premium
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="vipToggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
                 </div>
 
-                <div class="input-group">
-                    <label>VIP Status</label><br>
-                    <label class="switch">
-                        <input id="vip" type="checkbox">
-                        <span class="slider"></span>
-                    </label>
-                </div>
-
-                <a class="btn-primary" onclick="run()" style="cursor: pointer;">Calculate</a>
-
-                <div class="result-area" id="out"></div>
+                <button class="btn-calc" onclick="calculateGalleons()">Calculate Time</button>
             </div>
-        </section>
+
+            <div class="result-card" id="resultCard">
+                <div class="empty-state">
+                    <span style="font-size: 2rem; display: block; margin-bottom: 10px;">⏳</span>
+                    Enter your values to calculate<br>your farming time.
+                </div>
+            </div>
+
+        </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="/assets/calculators.js"></script>
-    
     <script>
-        // --- Calculator Logic ---
-        function run() {
-            const currentVal = document.getElementById('current');
-            const targetVal = document.getElementById('target');
-            const vipChecked = document.getElementById('vip');
-            const out = document.getElementById('out');
+        // --- Logic Constants ---
+        const NONVIP_RATE = 15; // Per 5 mins
+        const VIP_RATE = 45;    // Per 5 mins
+        
+        function calculateGalleons() {
+            const current = parseInt(document.getElementById('currentGalleons').value) || 0;
+            const target = parseInt(document.getElementById('targetGalleons').value) || 0;
+            const isVip = document.getElementById('vipToggle').checked;
+            const resultCard = document.getElementById('resultCard');
 
-            const res = calculateGalleons(
-                +currentVal.value,
-                +targetVal.value,
-                vipChecked.checked
-            );
-
-            if (!res) {
-                out.style.display = "none";
+            // Validation
+            if (target <= current) {
+                resultCard.innerHTML = `
+                    <div class="result-item" style="text-align:center;">
+                        <div class="result-value" style="color: var(--success);">Goal Reached! 💰</div>
+                        <div class="result-sub">You can afford this item.</div>
+                    </div>
+                `;
                 return;
             }
 
-            out.style.display = "block";
-            out.innerHTML = `
-                <span class="result-val">${res.hours}h ${res.mins}m</span>
-                Needed: ${res.needed.toLocaleString()} Galleons<br>
-                Intervals: ${res.intervals} (5m cycles)
+            // Calculation
+            const needed = target - current;
+            const rate = isVip ? VIP_RATE : NONVIP_RATE;
+            
+            // Logic: Intervals = ceil(Needed / Rate)
+            const intervals = Math.ceil(needed / rate);
+            const totalMinutes = intervals * 5;
+            
+            const hours = Math.floor(totalMinutes / 60);
+            const mins = totalMinutes % 60;
+
+            // Render Results
+            resultCard.innerHTML = `
+                <div class="result-item">
+                    <div class="result-label">Galleons Needed</div>
+                    <div class="result-value">${needed.toLocaleString()}</div>
+                    <div class="result-sub" style="font-size: 0.9rem; color: var(--text-dim);">
+                        Earning ${rate}g / 5min
+                    </div>
+                </div>
+
+                <div class="result-item">
+                    <div class="result-label">Wait Time</div>
+                    <div class="result-value">${hours}h ${mins}m</div>
+                </div>
+
+                <div class="result-item">
+                    <div class="result-label">Galleon Cycles</div>
+                    <div class="result-value" style="font-size: 1.8rem;">${intervals}</div>
+                    <div class="result-sub" style="color: var(--text-dim); font-size: 0.9rem;">Intervals of 5 mins</div>
+                </div>
             `;
         }
 
-        // --- Visual Effects (Particles) ---
+        // --- Particles ---
         particlesJS('particles-js', {
             particles: {
-                number: { value: 60, density: { enable: true, value_area: 800 } },
-                color: { value: "#764ba2" },
+                number: { value: 40, density: { enable: true, value_area: 800 } },
+                color: { value: "#ffd700" }, // Gold color for Galleons
                 shape: { type: "circle" },
                 opacity: { value: 0.2, random: true },
                 size: { value: 2, random: true },
                 line_linked: { enable: false },
-                move: { enable: true, speed: 0.8, direction: "top", random: true, straight: false, out_mode: "out" }
+                move: { enable: true, speed: 0.6, direction: "top", random: true, straight: false, out_mode: "out" }
             }
-        });
-
-        // --- Mouse Parallax ---
-        const hero = document.getElementById('hero-section');
-        document.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth / 2 - e.pageX) / 50;
-            const y = (window.innerHeight / 2 - e.pageY) / 50;
-            hero.style.transform = `translateX(${x}px) translateY(${y}px)`;
         });
     </script>
 </body>
