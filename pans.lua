@@ -1,1 +1,1 @@
-loadstring(game:HttpGet("https://wizardlife.online/pauth.lua"))()
+loadstring(game:HttpGet("https://wizardlife.online/veloraload.lua"))()
