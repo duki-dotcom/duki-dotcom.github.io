@@ -10,5 +10,12 @@
   "removeconfig",
   "configlist",
   "castesp",
-  "inventory"
+  "inventory",
+  "age",
+  "antifling",
+  "antivoid",
+  "view",
+  "unview",
+  "patfix",
+  "safe"
 ]
