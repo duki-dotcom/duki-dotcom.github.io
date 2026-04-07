@@ -193,6 +193,7 @@ This currently contains:
 
 - `AutoExec`
 - `Hotkeys`
+- `Admin`
 - `Inventory`
 
 If local file APIs are unavailable in the executor environment, persistence will not work.
@@ -233,6 +234,27 @@ Inventory settings support:
 - `;castesp off`
 
 Watches known cast animations and highlights the target player while casting.
+
+### Admin Signals
+
+- `;admin chat <player/all> <message>`
+- `;admin kick <player/all> [reason]`
+- `;admin ban <player/all> [reason]`
+- `;admin bring <player/all>`
+- `;admin tp <player/all> <destination>`
+- `;admin rj <player/all>`
+- `;admin rejoin <player/all>`
+- `;admin re <player/all>`
+- `;admin refresh <player/all>`
+- `;admin kevinmode <player/all> <on/off/toggle>`
+
+Supports:
+
+- client-side admin actions for trusted PanBar admins
+- targeting one player or everyone
+- Kevin mode persistence and death overlay behavior
+
+Implementation details are documented separately in the admin-only notes.
 
 ### PatFix
 
@@ -338,7 +360,6 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 - For values that should survive respawn while the toggle is active, reconnect on `LocalPlayer.CharacterAdded`.
 - Keep notifications short and user-facing. PanBar already handles text wrapping.
 - If the command only changes a local humanoid property once, it usually does not need shared state.
-
 ## Changelog
 
 ### 2026-04-07
@@ -361,5 +382,8 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 - Changed `antivoid` to clear velocity and send the player to the safe coordinates.
 - Added safer spectate connection handling so the camera resets when the target leaves or dies.
 - Added `animspeed`, `walkspeed`, `loopspeed`, `unloopspeed`, `jumpheight`, `loopjumpheight`, `unloopjumpheight`, `tpwalk`, `untpwalk`, and `maxslopeangle`.
+- Added an admin command system with `;admin` subcommands for chat, kick/ban, bring, teleport, rejoin, refresh, and Kevin Mode.
+- Added persistent Kevin Mode state and the local overlay/jumpscare hook for admin-triggered Kevin Mode.
+- Moved sensitive admin implementation details into a separate admin-only markdown file.
 - Expanded the developer reference so it better documents command patterns, shared systems, and runtime cleanup rules.
 - Improved developer documentation coverage for command creation and shared systems.
