@@ -17,7 +17,7 @@ Update this file whenever PanBar 2 changes.
 - `cmds/*.lua`
   Individual command modules.
 - `control/`
-  Browser-side key control panel plus exported `keys.json` / `blacklist.json` registries for loader and main auth.
+  Browser-side offline key control panel plus optional local `keys.json` / `blacklist.json` archive exports.
 - `index.json`
   Remote command manifest. New commands must be added here or they will not load.
 
@@ -200,10 +200,7 @@ This currently contains:
 - `Admin`
 - `Inventory`
 
-PanBar 2 license auth now also reads:
-
-- `control/keys.json`
-- `control/blacklist.json`
+PanBar 2 license auth is now offline and verifies a self-contained opaque key locally.
 
 If local file APIs are unavailable in the executor environment, persistence will not work.
 
@@ -401,8 +398,8 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 - Added a temporary admin signal debug HUD and local signal marker preview for testing send/decode/receive flow.
 - Improved admin signal testing with a temporary draggable `;admin logs` panel, wider receiver detection, and local loopback for self-targeted tests.
 - Restored far-out admin signal coordinates, removed default signal ESP unless admin debug is enabled, and added `;admin debug`.
-- Added stronger launch authentication in `main.lua` using opaque hashed license records from `control/keys.json` and `control/blacklist.json`.
-- Added a new `loader.lua` for PanBar 2 with registry-backed key validation and saved-key support.
-- Added a new `control/` folder with a revamped browser key manager, opaque key generation, registry export, and blacklist export.
+- Added stronger offline launch authentication in `main.lua` using a self-contained opaque key format.
+- Added a new `loader.lua` for PanBar 2 with offline key validation and saved-key support.
+- Added a new `control/` folder with a revamped browser key manager, opaque key generation, and optional local archive exports.
 - Expanded the developer reference so it better documents command patterns, shared systems, and runtime cleanup rules.
 - Improved developer documentation coverage for command creation and shared systems.
