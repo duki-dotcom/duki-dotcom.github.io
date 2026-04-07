@@ -17,5 +17,21 @@
   "view",
   "unview",
   "patfix",
-  "safe"
+  "safe",
+  "deletevelocity",
+  "gravity",
+  "hipheight",
+  "sit",
+  "reset",
+  "refresh",
+  "animspeed",
+  "walkspeed",
+  "loopspeed",
+  "unloopspeed",
+  "jumpheight",
+  "loopjumpheight",
+  "unloopjumpheight",
+  "tpwalk",
+  "untpwalk",
+  "maxslopeangle"
 ]

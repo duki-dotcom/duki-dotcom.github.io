@@ -250,12 +250,37 @@ Supports:
 - `;safe`
 - `;antivoid`
 - `;antifling`
+- `;deletevelocity`
 
 Supports:
 
 - teleporting to the shared safe position
-- lifting the player if they fall below Y=2
+- teleporting the player to safe and clearing velocity if they fall below Y=2
 - fling protection with velocity/spin detection and safe snapback
+- clearing current velocity manually
+
+### Movement Tweaks
+
+- `;walkspeed <number?>`
+- `;loopspeed <number?>`
+- `;unloopspeed`
+- `;jumpheight <number?>`
+- `;loopjumpheight <number?>`
+- `;unloopjumpheight`
+- `;animspeed <number?>`
+- `;tpwalk <number?>`
+- `;untpwalk`
+- `;maxslopeangle <number?>`
+
+Supports:
+
+- one-off walkspeed changes
+- persistent walkspeed lock across resets while enabled
+- one-off jump height / jump power changes depending on the game
+- persistent jump lock across resets while enabled
+- changing the speed of currently playing animation tracks
+- teleport-walking while you move, with a separate stop command
+- changing humanoid max slope angle
 
 ### Spectate / View
 
@@ -272,6 +297,11 @@ Supports:
 ### Utility
 
 - `;age <player>`
+- `;gravity <number?>`
+- `;hipheight <number?>`
+- `;sit`
+- `;reset`
+- `;refresh`
 
 Shows account age with a friendlier time breakdown.
 
@@ -300,18 +330,36 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 8. Add the command filename, without `.lua`, to `index.json`.
 9. Update this file and append a changelog entry.
 
+## Command Tips
+
+- Prefer one file per command, even for aliases with different names.
+- If a command needs a clean stop path, add a separate explicit stop command like `untpwalk`.
+- For runtime loops, store connections under `env.State.<Feature>` and always disconnect before rebinding.
+- For values that should survive respawn while the toggle is active, reconnect on `LocalPlayer.CharacterAdded`.
+- Keep notifications short and user-facing. PanBar already handles text wrapping.
+- If the command only changes a local humanoid property once, it usually does not need shared state.
+
 ## Changelog
 
 ### 2026-04-07
 
+- Improved main command bar sizing, animation, autocomplete placement, and keyboard handling.
+- Fixed right-arrow autocomplete acceptance and restored up/down history handling while focused.
+- Fixed the semicolon opener flow and ESC close behavior for the command bar.
+- Added shared `env.State`, `env.Config`, `env.Storage`, and fallback util wiring for safer command upgrades.
 - Added shared sapphire notification UI.
 - Added local persistence at `PanBar2/config.json`.
 - Added auto-exec config commands: `addconfig`, `removeconfig`, `configlist`.
 - Added hotkey system with GUI editor and runtime execution.
 - Added chat send helper to shared utils/fallback utils.
 - Added inventory sorting system with persisted settings and edit GUI.
+- Fixed the inventory editor layout bug caused by invalid custom instance field assignment.
+- Changed inventory runtime so sorting applies on enable, after edits, and on respawn instead of looping.
 - Added cast ESP command.
-- Fixed inventory editor error caused by assigning custom fields like `Row.SlotLabel` onto Roblox instances.
 - Added `patfix`, `safe`, `antivoid`, `antifling`, `age`, `view`, and `unview`.
+- Added `deletevelocity`, `gravity`, `hipheight`, `sit`, `reset`, and `refresh`.
+- Changed `antivoid` to clear velocity and send the player to the safe coordinates.
 - Added safer spectate connection handling so the camera resets when the target leaves or dies.
+- Added `animspeed`, `walkspeed`, `loopspeed`, `unloopspeed`, `jumpheight`, `loopjumpheight`, `unloopjumpheight`, `tpwalk`, `untpwalk`, and `maxslopeangle`.
+- Expanded the developer reference so it better documents command patterns, shared systems, and runtime cleanup rules.
 - Improved developer documentation coverage for command creation and shared systems.
