@@ -1,1 +1,12 @@
-["cmds", "rejoin", "fire", "goto", "spin", "effect"]
+[
+  "cmds",
+  "effect",
+  "fire",
+  "goto",
+  "rejoin",
+  "spin",
+  "hotkey",
+  "addconfig",
+  "removeconfig",
+  "configlist"
+]
