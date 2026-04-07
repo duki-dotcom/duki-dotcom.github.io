@@ -7,13 +7,17 @@ Update this file whenever PanBar 2 changes.
 ## Project Layout
 
 - `main.lua`
-  Main runtime. Builds the command bar UI, loads commands/utils/perms, owns shared state, persistence, notifications, hotkeys, auto-exec, and inventory runtime logic.
+  Main runtime. Builds the command bar UI, authenticates launch keys, loads commands/utils/perms, owns shared state, persistence, notifications, hotkeys, auto-exec, and inventory runtime logic.
+- `loader.lua`
+  Standalone loader for PanBar 2 license entry and main-script launch.
 - `utils.lua`
   Shared helper functions used by commands.
 - `cmds.lua`
   Command browser GUI used by `;cmds` / `;help`.
 - `cmds/*.lua`
   Individual command modules.
+- `control/`
+  Browser-side key control panel plus exported `keys.json` / `blacklist.json` registries for loader and main auth.
 - `index.json`
   Remote command manifest. New commands must be added here or they will not load.
 
@@ -196,6 +200,11 @@ This currently contains:
 - `Admin`
 - `Inventory`
 
+PanBar 2 license auth now also reads:
+
+- `control/keys.json`
+- `control/blacklist.json`
+
 If local file APIs are unavailable in the executor environment, persistence will not work.
 
 ## Current Systems
@@ -247,12 +256,16 @@ Watches known cast animations and highlights the target player while casting.
 - `;admin re <player/all>`
 - `;admin refresh <player/all>`
 - `;admin kevinmode <player/all> <on/off/toggle>`
+- `;admin logs <on/off/toggle>`
+- `;admin debug <on/off/toggle>`
 
 Supports:
 
 - client-side admin actions for trusted PanBar admins
 - targeting one player or everyone
 - Kevin mode persistence and death overlay behavior
+- a draggable admin log window for packet activity
+- optional extra debug-only signal visuals when admin debug is enabled
 
 Implementation details are documented separately in the admin-only notes.
 
@@ -385,5 +398,11 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 - Added an admin command system with `;admin` subcommands for chat, kick/ban, bring, teleport, rejoin, refresh, and Kevin Mode.
 - Added persistent Kevin Mode state and the local overlay/jumpscare hook for admin-triggered Kevin Mode.
 - Moved sensitive admin implementation details into a separate admin-only markdown file.
+- Added a temporary admin signal debug HUD and local signal marker preview for testing send/decode/receive flow.
+- Improved admin signal testing with a temporary draggable `;admin logs` panel, wider receiver detection, and local loopback for self-targeted tests.
+- Restored far-out admin signal coordinates, removed default signal ESP unless admin debug is enabled, and added `;admin debug`.
+- Added stronger launch authentication in `main.lua` using opaque hashed license records from `control/keys.json` and `control/blacklist.json`.
+- Added a new `loader.lua` for PanBar 2 with registry-backed key validation and saved-key support.
+- Added a new `control/` folder with a revamped browser key manager, opaque key generation, registry export, and blacklist export.
 - Expanded the developer reference so it better documents command patterns, shared systems, and runtime cleanup rules.
 - Improved developer documentation coverage for command creation and shared systems.
