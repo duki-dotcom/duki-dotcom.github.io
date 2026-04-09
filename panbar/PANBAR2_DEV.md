@@ -104,6 +104,23 @@ Every command receives:
 - `env.InvokedAs`
   The command name actually typed by the user.
 
+### Command Runtime Contract (strict expectations)
+
+All remote command modules are now validated before registration:
+
+- module must return a table
+- `Name` must be a non-empty string
+- `Execute` must be a function
+- `Authority` is normalized to one of `User`, `Trusted`, `Admin` (`User` fallback)
+- `Aliases` must be a table when present (invalid alias formats are ignored)
+
+Additional assumptions command authors should keep:
+
+- `args` is positional text split on spaces; greedy behavior must be handled by command code/metadata.
+- command execution is wrapped in `pcall` by `main.lua`; commands should still guard game object lookups.
+- command names/aliases are case-insensitive at runtime.
+- collisions are allowed but warned; later registrations can override earlier keys.
+
 ## Notification System
 
 Use:
@@ -203,6 +220,68 @@ This currently contains:
 PanBar 2 license auth is now offline and verifies a self-contained opaque key locally.
 
 If local file APIs are unavailable in the executor environment, persistence will not work.
+
+## Remote Loader Behavior and Failure Modes
+
+PanBar 2 boot order in `main.lua` is:
+
+1. authenticate key
+2. load persisted config
+3. load local cache manifest and evaluate remote version state
+4. load `perms.json` from remote or cache
+5. load `utils.lua` from remote or cache (fallback utils remain available)
+6. load `index.json` + command modules from remote or cache
+
+Current failure handling:
+
+- `perms.json` fetch failure:
+  rank list remains unchanged (defaults to no elevated users)
+- `perms.json` parse/schema failure:
+  malformed entries are dropped and a warning notification is shown
+- `utils.lua` fetch/compile/init failure:
+  fallback util implementation remains active
+- `index.json` fetch/parse failure:
+  remote commands are unavailable for that load, but native `reload` remains injected
+- individual command fetch/compile/validation failure:
+  module is skipped and load summary reports success/failure counts
+- alias/name collisions:
+  collisions are logged with warnings to aid debugging
+
+## Remote Versioning And Cache
+
+PanBar now supports a local command cache with remote version checks.
+
+Cache files:
+
+- `PanBar2/cache/manifest.json`
+- `PanBar2/cache/index.json`
+- `PanBar2/cache/utils.lua`
+- `PanBar2/cache/perms.json`
+- `PanBar2/cache/cmds/*.lua`
+
+Remote version endpoint:
+
+- `version.json` at `BaseUrl`
+
+Version format policy:
+
+- Use semantic-style tags like `v2.0.1`, `v2.0.2`, `v2.0.3`
+- Do not use date-based versions
+
+Recommended `version.json` shape:
+
+```json
+{
+  "version": "v2.0.1"
+}
+```
+
+Behavior:
+
+- if remote version equals cached manifest version, PanBar prefers cached files for faster startup
+- if remote version differs, PanBar fetches and refreshes cache files, then updates manifest version
+- if remote version cannot be fetched, PanBar prefers cache when cache is complete
+- if cache is missing/incomplete, PanBar falls back to remote fetch paths
 
 ## Current Systems
 
@@ -371,6 +450,21 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 - Keep notifications short and user-facing. PanBar already handles text wrapping.
 - If the command only changes a local humanoid property once, it usually does not need shared state.
 ## Changelog
+
+### 2026-04-09
+
+- Added stricter command module validation and safer registration in `main.lua` (contract checks, authority normalization, alias validation, collision warnings).
+- Improved loader diagnostics by reporting command load success/failure counts.
+- Hardened `perms.json` parsing with schema-safe normalization and warning feedback on invalid data.
+- Improved admin packet receiver validation with sender consistency checks, allowed-action filtering, and optional packet timestamp freshness (`SentAt`).
+- Added packet `SentAt` on admin send path to help reduce replay/stale execution risk.
+- Fixed listener cleanup leaks in `cmds/inventory.lua` and `cmds/hotkey.lua` by disconnecting `UserInputService` hooks when menus are destroyed.
+- Improved `cmds/lasertools.lua` cleanup so stale `BEAM` tools are removed from both `Backpack` and `Character`.
+- Resolved refresh/reload naming conflict by stopping native reload override of `refresh`.
+- Made `reload` accessible to all users and added immediate load-start notification: "Loading commands, please wait...".
+- Optimized admin signal scanning to reduce client lag by replacing repeated full descendant scans with incremental candidate processing and early spatial bounds filtering.
+- Added local cache system for `index.json`, `utils.lua`, `perms.json`, and command modules under `PanBar2/cache/`.
+- Added manifest + remote version-gate loading flow using `version.json` and non-date version tags (for example `v2.0.x`) to skip unnecessary network reloads.
 
 ### 2026-04-07
 
