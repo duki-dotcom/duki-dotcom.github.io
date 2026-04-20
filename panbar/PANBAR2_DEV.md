@@ -176,6 +176,14 @@ These are already in active use:
 - `env.Storage.UpsertHotkey({ OriginalKey?, Key, Action, Value })`
 - `env.Storage.RemoveHotkey(key)`
 
+Hotkey bind fields currently used:
+
+- `Key`
+- `Action`
+  `chat`, `command`, `virtual`
+- `Value`
+  For `virtual`, the current mock values are `laser` and `teleport`
+
 ### Auto-exec / config
 
 - `env.Storage.AddAutoExec(commandText)`
@@ -292,6 +300,14 @@ Behavior:
 - Supports:
   chat text binds
   command binds
+  virtual-tool binds
+
+Current virtual hotkey mock actions:
+
+- `laser`
+  Starts on key down and fires continuously while the key is held, without equipping the `BEAM` tool.
+- `teleport`
+  Fires once on key down and teleports to the mouse hit position without equipping the teleport tool.
 
 ### Auto-exec
 
@@ -320,7 +336,7 @@ Inventory settings support:
 
 Watches known cast animations and highlights the target player while casting.
 
-### Admin Signals
+### Admin Commands
 
 - `;admin chat <player/all> <message>`
 - `;admin kick <player/all> [reason]`
@@ -339,9 +355,10 @@ Supports:
 
 - client-side admin actions for trusted PanBar admins
 - targeting one player or everyone
+- chat-based transport using normal `;admin ...` messages
 - Kevin mode persistence and death overlay behavior
-- a draggable admin log window for packet activity
-- optional extra debug-only signal visuals when admin debug is enabled
+- a draggable admin log window for admin transport/activity
+- optional extra debug-only local visual markers when admin debug is enabled
 
 Implementation details are documented separately in the admin-only notes.
 
@@ -451,18 +468,23 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 - If the command only changes a local humanoid property once, it usually does not need shared state.
 ## Changelog
 
+### 2026-04-20
+
+- Replaced the admin projectile/particle transport with chat-driven `;admin ...` messages.
+- Removed the expensive admin signal scan/decode loop from `main.lua` and switched the receiver to player `.Chatted` listeners.
+- Kept the existing admin action surface and Kevin Mode behavior while reducing runtime overhead on the command bar.
+- Expanded the hotkey system with a first-pass `virtual` action type for behavior-driven hotkeys.
+- Added mock virtual hotkey support for laser fire and mouse teleport so users do not need equipped tools for those actions.
+
 ### 2026-04-09
 
 - Added stricter command module validation and safer registration in `main.lua` (contract checks, authority normalization, alias validation, collision warnings).
 - Improved loader diagnostics by reporting command load success/failure counts.
 - Hardened `perms.json` parsing with schema-safe normalization and warning feedback on invalid data.
-- Improved admin packet receiver validation with sender consistency checks, allowed-action filtering, and optional packet timestamp freshness (`SentAt`).
-- Added packet `SentAt` on admin send path to help reduce replay/stale execution risk.
 - Fixed listener cleanup leaks in `cmds/inventory.lua` and `cmds/hotkey.lua` by disconnecting `UserInputService` hooks when menus are destroyed.
 - Improved `cmds/lasertools.lua` cleanup so stale `BEAM` tools are removed from both `Backpack` and `Character`.
 - Resolved refresh/reload naming conflict by stopping native reload override of `refresh`.
 - Made `reload` accessible to all users and added immediate load-start notification: "Loading commands, please wait...".
-- Optimized admin signal scanning to reduce client lag by replacing repeated full descendant scans with incremental candidate processing and early spatial bounds filtering.
 - Added local cache system for `index.json`, `utils.lua`, `perms.json`, and command modules under `PanBar2/cache/`.
 - Added manifest + remote version-gate loading flow using `version.json` and non-date version tags (for example `v2.0.x`) to skip unnecessary network reloads.
 
@@ -489,9 +511,8 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 - Added an admin command system with `;admin` subcommands for chat, kick/ban, bring, teleport, rejoin, refresh, and Kevin Mode.
 - Added persistent Kevin Mode state and the local overlay/jumpscare hook for admin-triggered Kevin Mode.
 - Moved sensitive admin implementation details into a separate admin-only markdown file.
-- Added a temporary admin signal debug HUD and local signal marker preview for testing send/decode/receive flow.
-- Improved admin signal testing with a temporary draggable `;admin logs` panel, wider receiver detection, and local loopback for self-targeted tests.
-- Restored far-out admin signal coordinates, removed default signal ESP unless admin debug is enabled, and added `;admin debug`.
+- Added a temporary admin debug HUD and local visual marker preview for testing admin actions.
+- Added a temporary draggable `;admin logs` panel and `;admin debug`.
 - Added stronger offline launch authentication in `main.lua` using a self-contained opaque key format.
 - Added a new `loader.lua` for PanBar 2 with offline key validation and saved-key support.
 - Added a new `control/` folder with a revamped browser key manager, opaque key generation, and optional local archive exports.
