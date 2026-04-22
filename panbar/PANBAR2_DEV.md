@@ -146,6 +146,8 @@ These are already in active use:
   Global effect toggles used by movement commands.
 - `env.State.SpellSpeed`
   Reserved for future spell-speed style commands.
+- `env.State.Spell`
+  Shared global spell used by spell-based tools and commands unless a command provides an override.
 - `env.State.Teleport`
   Shared teleport config.
 - `env.State.Spin`
@@ -182,13 +184,16 @@ Hotkey bind fields currently used:
 - `Action`
   `chat`, `command`, `virtual`
 - `Value`
-  For `virtual`, the current mock values are `laser` and `teleport`
+  For `virtual`, the current values are `laser`, `teleport`, `omega`, `teto`, and `miku`
 
 ### Auto-exec / config
 
 - `env.Storage.AddAutoExec(commandText)`
 - `env.Storage.RemoveAutoExec(commandText)`
 - `env.Storage.GetAutoExec()`
+- `env.Storage.GetKeepEnabled()`
+- `env.Storage.SetKeepEnabled(state)`
+- `env.Storage.QueueKeepPayload()`
 
 ### Inventory
 
@@ -205,12 +210,18 @@ Currently available in `utils.lua` or local fallback:
   Internal setup hook.
 - `env.Util.fireSpell(origin, direction, spellName, speed)`
 - `env.Util.getMouseTarget()`
+- `env.Util.getClosestMouseCharacter(maxDistance?)`
 - `env.Util.getPlayer(name)`
   Prefix match on username and display name.
 - `env.Util.toggleSpin(parent, state)`
 - `env.Util.runFX(env, isBefore)`
 - `env.Util.sendTextMessage(message)`
   Sends text through TextChatService, with legacy chat fallback if needed.
+- `env.Util.castOmega()`
+- `env.Util.castTeto()`
+- `env.Util.castMiku()`
+- `env.Util.startBlockBreak(player, shouldLoop)`
+- `env.Util.stopBlockBreak()`
 
 ## Persistence
 
@@ -221,6 +232,8 @@ PanBar 2 stores local config at:
 This currently contains:
 
 - `AutoExec`
+- `Keep`
+- `Spell`
 - `Hotkeys`
 - `Admin`
 - `Inventory`
@@ -308,12 +321,21 @@ Current virtual hotkey mock actions:
   Starts on key down and fires continuously while the key is held, without equipping the `BEAM` tool.
 - `teleport`
   Fires once on key down and teleports to the mouse hit position without equipping the teleport tool.
+- `omega`
+  Fires the omega path attack on key press without equipping the tool.
+- `teto`
+  Fires the granite blast attack on key press without equipping the tool.
+- `miku`
+  Fires the glacious beam attack on key press without equipping the tool.
 
 ### Auto-exec
 
 - `;addconfig <command>`
 - `;removeconfig <command>`
 - `;configlist`
+- `;keep`
+- `;keep on`
+- `;keep off`
 
 These run automatically when PanBar loads.
 
@@ -328,6 +350,8 @@ Inventory settings support:
 - saved ordered list of items
 - optional broom hiding
 - restoring hidden brooms instead of deleting them
+- reorder flow that temporarily stages tools in `ReplicatedStorage`, then reapplies wand slot updates through `InventoryEvent`
+- waits until no tool is equipped before sorting
 
 ### CastESP
 
@@ -433,6 +457,35 @@ Supports:
 
 Shows account age with a friendlier time breakdown.
 
+### Combat / Tools
+
+- `;spell <spell?>`
+- `;omega`
+- `;teto`
+- `;miku`
+- `;crush <player>`
+- `;blockbreak <player> <loop:true/false>`
+- `;bbreak <player> <loop:true/false>`
+
+Supports:
+
+- shared global spell state with per-command override support for spell-driven attacks
+- omega, teto, and miku tool commands plus matching virtual hotkey variants
+- blockbreak monitoring that predicts or reacts to a target's block timing
+
+### Trusted Tools / Teleports
+
+- `;gametp <oldmap/artis>`
+- `;oldmap`
+- `;artis`
+- `;boxoftrix`
+- `;bot`
+
+Supports:
+
+- trusted-only place teleports for the old map and artifacts destinations
+- trusted-only Box Of Trix loader access
+
 ## Autocomplete Notes
 
 Main bar autocomplete currently supports:
@@ -442,7 +495,7 @@ Main bar autocomplete currently supports:
 - `player` arguments
 - `flag` arguments
 - greedy choice argument followed by player
-  Example: `;fire <spell> <player>`
+  Example: `;fire <player>` or `;fire <spell> <player>`
 
 The `;cmds` GUI also uses command metadata to show clickable suggestions.
 
@@ -468,8 +521,26 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 - If the command only changes a local humanoid property once, it usually does not need shared state.
 ## Changelog
 
+### 2026-04-22
+
+- Added global spell persistence plus the new `;spell` command for inspecting or changing the shared spell.
+- Updated `;fire` and `;lasertools` so they use the shared global spell by default and still accept per-command spell overrides.
+- Added `;boxoftrix` with `;bot` alias and later tightened it to `Trusted` authority.
+- Ported `antiheadturn`, `crush`, and the old place teleport flow into PanBar 2 command modules.
+- Added `;gametp` with `;oldmap` and `;artis` aliases, and locked those teleports to `Trusted`.
+- Added a persisted `;keep` command that queues `https://wizardlife.online/panbar/main.lua` on rejoin when enabled.
+- Hooked keep-queue behavior into both the normal rejoin command path and the admin-driven rejoin path.
+- Added `;omega`, `;teto`, and `;miku` tool commands based on the spare reference scripts.
+- Expanded virtual hotkeys to support `omega`, `teto`, and `miku` in addition to `laser` and `teleport`.
+- Added `;blockbreak` with `;bbreak` alias and support for `loop:true` / `loop:false`.
+- Added new shared util helpers for omega, teto, miku, and blockbreak attack logic.
+- Observed and documented that inventory sorting was changed recently to stage items in `ReplicatedStorage` and keep `InventoryEvent` wand slot updates.
+- Removed the player-owned temporary inventory staging approach after it was found to be unsafe for books.
+
 ### 2026-04-20
 
+- Changed inventory sorting to stage tools in `ReplicatedStorage` during reorder, which is safer for books than moving them under a player-owned folder.
+- Kept wand slot `InventoryEvent` calls and added a short equipped-tool guard/retry so books are less likely to desync during sorting.
 - Replaced the admin projectile/particle transport with chat-driven `;admin ...` messages.
 - Removed the expensive admin signal scan/decode loop from `main.lua` and switched the receiver to player `.Chatted` listeners.
 - Kept the existing admin action surface and Kevin Mode behavior while reducing runtime overhead on the command bar.
