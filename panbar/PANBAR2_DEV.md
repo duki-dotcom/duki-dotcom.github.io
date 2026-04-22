@@ -328,6 +328,11 @@ Current virtual hotkey mock actions:
 - `miku`
   Fires the glacious beam attack on key press without equipping the tool.
 
+Hotkey editor/runtime notes:
+
+- key aliases now cover symbol keys such as `[`, `]`, `;`, `\`, `'`, `/`, and numpad keys
+- the virtual-tools picker is now scrollable so additional tool actions can be added without breaking the layout
+
 ### Auto-exec
 
 - `;addconfig <command>`
@@ -454,6 +459,10 @@ Supports:
 - `;sit`
 - `;reset`
 - `;refresh`
+- `;antiafk [on/off]`
+- `;qol`
+- `;resetanims`
+- `;clashanim [on/off]`
 
 Shows account age with a friendlier time breakdown.
 
@@ -534,6 +543,11 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 - Expanded virtual hotkeys to support `omega`, `teto`, and `miku` in addition to `laser` and `teleport`.
 - Added `;blockbreak` with `;bbreak` alias and support for `loop:true` / `loop:false`.
 - Added new shared util helpers for omega, teto, miku, and blockbreak attack logic.
+- Ported `resetanims` and the anti-clash animation blocker into PB2 as `;resetanims` and `;clashanim`.
+- Ported PB1 anti-idle protection into PB2 as `;antiafk`, keeping the old on/off behavior but moving runtime state into PB2 command state.
+- Added `;qol` with `;qolfix` alias for one-shot cleanup of the BackgroundSummer dirt parts and the known looping sound id.
+- Expanded hotkey key parsing/labels to support bracket keys, punctuation keys, and numpad buttons.
+- Reworked the hotkey editor's virtual-tools section into a compact scrollable picker so it scales better with more tools.
 - Observed and documented that inventory sorting was changed recently to stage items in `ReplicatedStorage` and keep `InventoryEvent` wand slot updates.
 - Removed the player-owned temporary inventory staging approach after it was found to be unsafe for books.
 
