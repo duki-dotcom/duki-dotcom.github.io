@@ -495,6 +495,28 @@ Supports:
 - trusted-only place teleports for the old map and artifacts destinations
 - trusted-only Box Of Trix loader access
 
+### Desmos
+
+- `;desmos <expression>`
+- `;desmos set [player]`
+- `;desmos add <expression>`
+- `;desmos replace <expression>`
+- `;desmos remove <number>`
+- `;desmos clear`
+- `;desmos off`
+- `;desmos range <xmin> <xmax> <ymin> <ymax>`
+- `;desmos size <width> [height]`
+- `;desmos samples <number>`
+- `;desmos grid <on/off/toggle>`
+- `;desmos axes <on/off/toggle>`
+- `;desmos spell <spell/default>`
+
+Supports:
+
+- world-space graph rendering with a frozen anchor snapshot in front of the selected player
+- multiple expressions plotted with spell projectiles
+- safe expression parsing for arithmetic, constants, implicit multiplication, and common calculator functions such as sin, cos, tan, sqrt, abs, log, ln, min, max, pow, and clamp
+
 ## Autocomplete Notes
 
 Main bar autocomplete currently supports:
@@ -529,6 +551,11 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 - Keep notifications short and user-facing. PanBar already handles text wrapping.
 - If the command only changes a local humanoid property once, it usually does not need shared state.
 ## Changelog
+
+### 2026-04-30
+
+- Added `;desmos` / `;graph` / `;calc` as a modular world-space graphing calculator command with frozen player-relative placement, safe expression parsing, grid and axis rendering, configurable range/size/samples, and spell selection.
+- Bumped the remote version tag to `v2.0.4` so cache refreshes pick up the new command manifest.
 
 ### 2026-04-22
 
