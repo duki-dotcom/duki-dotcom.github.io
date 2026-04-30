@@ -556,6 +556,7 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 
 - Added `;desmos` / `;graph` / `;calc` as a modular world-space graphing calculator command with frozen player-relative placement, safe expression parsing, grid and axis rendering, configurable range/size/samples, and spell selection.
 - Bumped the remote version tag to `v2.0.4` so cache refreshes pick up the new command manifest.
+- Adjusted Desmos rendering to fire every graph projectile upward at speed `3`, with axes using `sectumsempra` and grid lines using `nox`; bumped the version tag to `v2.0.9`.
 
 ### 2026-04-22
 
