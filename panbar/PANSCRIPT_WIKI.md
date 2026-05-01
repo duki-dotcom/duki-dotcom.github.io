@@ -119,6 +119,12 @@ Unknown food behavior:
 - persisted under `env.State.PanScriptAiri.FoodPreferences`
 - future reactions stay consistent per item
 
+## Convenience Commands
+
+- `;feed <food?>`
+  - Feeds Airi directly (defaults to `cake`).
+  - Uses the same food preference system as `feed(...)` in PanScript.
+
 ## Airi Speech Variation
 
 Airi speech is generated from large phrase-part pools by context categories:

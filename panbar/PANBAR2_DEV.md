@@ -472,6 +472,7 @@ Supports:
 - `;panscript check <code|file.pans>`
 - `;panscript howpolite <code|file.pans>`
 - `;panscript new [name]`
+- `;feed <food?>`
 
 Shows account age with a friendlier time breakdown.
 
@@ -593,6 +594,7 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 
 - Added the first shared PanScript runtime module (`panscript_runtime.lua`) with parser validation, transpile-to-Luau execution, politeness/affection authority stack handling, and structured failure logging.
 - Added `;panscript` command family (`run`, `check`, `howpolite`, `new`) with `.pans` file support and runtime-backed execution.
+- Added `;feed` command to feed Airi outside PanScript and persist food preferences.
 - Added `;paneditor` (aliases: `editor`, `ide`, `panside`): a Windows-style coding IDE with integrated explorer, tabbed buffers, mini terminal, quick-open, command palette, command bridge, and PanScript run/check controls.
 - Expanded Airi dialogue generation to high-variation runtime speech pools across politeness, errors, and food interactions.
 - Reworked Airi food handling with default likes/dislikes, fuzzy food matching (`cupcakes` -> `cupcake` style normalization), and persisted unknown-food preferences.
