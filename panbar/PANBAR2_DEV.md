@@ -12,6 +12,8 @@ Update this file whenever PanBar 2 changes.
   Standalone loader for PanBar 2 license entry and main-script launch.
 - `utils.lua`
   Shared helper functions used by commands.
+- `panscript_runtime.lua`
+  Shared PanScript parser/transpiler/runtime authority stack used by both command execution and the editor.
 - `cmds.lua`
   Command browser GUI used by `;cmds` / `;help`.
 - `cmds/*.lua`
@@ -463,8 +465,43 @@ Supports:
 - `;qol`
 - `;resetanims`
 - `;clashanim [on/off]`
+- `;paneditor [path?]`
+- `;editor [path?]`
+- `;ide [path?]`
+- `;panscript run <code|file.pans>`
+- `;panscript check <code|file.pans>`
+- `;panscript howpolite <code|file.pans>`
+- `;panscript new [name]`
 
 Shows account age with a friendlier time breakdown.
+
+### PanScript / Pan Editor
+
+PanScript is now a first-class scripting language/runtime in PB2.
+
+Current behavior:
+
+- `.pans` is the canonical PanScript file extension.
+- PanScript is parsed and transpiled to Luau before execution.
+- Runtime enforces authority checks in this order:
+  `AngryError` -> `PoliteError` -> `SyntaxError` -> runtime execution.
+- PanScript accepts both `#` and `--` comments.
+- PanScript accepts tab indentation (tabs are normalized as width 4).
+- PanScript now exposes built-ins for PB2 integration:
+  `run_command(...)` and `notify(...)` so scripts can interact with PanBar commands/systems.
+- Failures are written to `/PanBar2/logs` with technical error snapshots.
+- Runtime state now centers on `Airi` (`env.State.PanScriptAiri`) instead of generic pet naming.
+- `feed(...)` now supports default loved/hated foods, fuzzy food matching, and persisted unknown-food preferences.
+
+Pan Editor (`;paneditor`) now provides:
+
+- Windows-style IDE shell
+- integrated folder explorer
+- open/save editing flow for any file type
+- tabbed buffers and line-number gutter
+- quick open (`Ctrl+P`) and command palette (`Ctrl+Shift+P`)
+- first-class `.pans` run/check workflow
+- terminal panel with Airi speech in bright contrast color
 
 ### Combat / Tools
 
@@ -551,6 +588,18 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 - Keep notifications short and user-facing. PanBar already handles text wrapping.
 - If the command only changes a local humanoid property once, it usually does not need shared state.
 ## Changelog
+
+### 2026-05-01
+
+- Added the first shared PanScript runtime module (`panscript_runtime.lua`) with parser validation, transpile-to-Luau execution, politeness/affection authority stack handling, and structured failure logging.
+- Added `;panscript` command family (`run`, `check`, `howpolite`, `new`) with `.pans` file support and runtime-backed execution.
+- Added `;paneditor` (aliases: `editor`, `ide`, `panside`): a Windows-style coding IDE with integrated explorer, tabbed buffers, mini terminal, quick-open, command palette, command bridge, and PanScript run/check controls.
+- Expanded Airi dialogue generation to high-variation runtime speech pools across politeness, errors, and food interactions.
+- Reworked Airi food handling with default likes/dislikes, fuzzy food matching (`cupcakes` -> `cupcake` style normalization), and persisted unknown-food preferences.
+- Updated parser behavior to accept tab indentation (normalized width 4) and both `#` and `--` comments.
+- Updated File Explorer so `.pans` is recognized as a PanScript file, added explicit `New Folder`, and added right-click context actions including Open With and Run File for `.pan` / `.pand` / `.pans`.
+- Updated command manifest (`index.json`) to include the new PanScript and Pan Editor commands.
+- Added and updated PanScript documentation in `PANSCRIPT_WIKI.md`.
 
 ### 2026-04-30
 
