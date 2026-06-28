@@ -24,6 +24,7 @@
   "blockbreak",
   "crush",
   "goto",
+  "safetp",
   "rejoin",
   "spin",
   "autoblock",
