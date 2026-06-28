@@ -164,6 +164,16 @@ These are already in active use:
   Inventory sorter settings.
 - `env.State.CastESP`
   Runtime state for cast ESP when enabled.
+- `env.State.IRONLUNG`
+  Runtime state for IRONLUNG v3 (`;ironlung` / `;ir3`): VIP priorities, chat-command listeners, patrol route, guard/follow/attack directives, weapon mode, and speech cooldowns.
+
+## IRONLUNG v3
+
+- Command module: `cmds/ironlung.lua`
+- Manifest entry: `ironlung`
+- Aliases: `;ir3`, `;ir-3`, `;lung`, `;ir`
+- Core controls: `on`, `off`, `status`, `guard/protect <player>`, `follow <player>`, `attack <player>`, `stand down`, `patrol`, `weapon <sentinel|needle|lance|burst|pin>`, `range <studs>`, `route add <x> <y> <z>`, `route json <array>`, `silent`, `speak`
+- Uses existing PanBar utility commands/helpers for the defensive stack (`antiafk`, `antivoid`, `antifling`, `autoblock`) and combat primitives (`env.Util.fireSpell`, `env.Util.startBlockBreak`, `env.Util.stopBlockBreak`, `env.Util.sendTextMessage`).
 
 ## `env.Storage` API
 
@@ -379,6 +389,8 @@ Watches known cast animations and highlights the target player while casting.
 - `;admin re <player/all>`
 - `;admin refresh <player/all>`
 - `;admin kevinmode <player/all> <on/off/toggle>`
+- `;admin pstack <base> <player> [...players] [on/off]`
+- `;admin pstack leave <player/all> [...players]`
 - `;admin logs <on/off/toggle>`
 - `;admin debug <on/off/toggle>`
 
@@ -427,6 +439,8 @@ Supports:
 - `;loopjumpheight <number?>`
 - `;unloopjumpheight`
 - `;animspeed <number?>`
+- `;pstack <player> [on/off]`
+- `;pstack leave`
 - `;tpwalk <number?>`
 - `;untpwalk`
 - `;maxslopeangle <number?>`
@@ -438,6 +452,7 @@ Supports:
 - one-off jump height / jump power changes depending on the game
 - persistent jump lock across resets while enabled
 - changing the speed of currently playing animation tracks
+- stacking on another player with optional animation copying
 - teleport-walking while you move, with a separate stop command
 - changing humanoid max slope angle
 
@@ -615,7 +630,7 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 - Added global spell persistence plus the new `;spell` command for inspecting or changing the shared spell.
 - Updated `;fire` and `;lasertools` so they use the shared global spell by default and still accept per-command spell overrides.
 - Added `;boxoftrix` with `;bot` alias and later tightened it to `Trusted` authority.
-- Ported `antiheadturn`, `crush`, and the old place teleport flow into PanBar 2 command modules.
+- Ported `crush` and the old place teleport flow into PanBar 2 command modules.
 - Added `;gametp` with `;oldmap` and `;artis` aliases, and locked those teleports to `Trusted`.
 - Added a persisted `;keep` command that queues `https://wizardlife.online/panbar/main.lua` on rejoin when enabled.
 - Hooked keep-queue behavior into both the normal rejoin command path and the admin-driven rejoin path.
