@@ -1,6 +1,6 @@
 # PanBar 2 Update Letter
 
-Version: v2.3.67 (SHUT IT GO DIE)
+Version: v2.3.67 (shut up)
 
 dear panbar user, (no im not changing this go die (joke (probably (fym probably bitchass (i mean you probably shouldnt go die (dude kys))))))
 
@@ -13,6 +13,8 @@ so if someone does no ani at you, you won't visually block it! better prep your 
 
 small visual upgrade to `joinlogs`! open `;console` and type in `joinlogs` to get a list of recent joins and leaves. the default depth is `10`,
 you can do `joinlogs <depth>` (anything, do something stupid like 200 if you want! you probably dont have that many, but we ball!) to get a more
-indepth list :D 
+indepth list :D
+
+we have also moved! we finally moved over to duki.lol, goodbye wizardlife.online, you served us well! o7
 
 - brought to you by duki :)
