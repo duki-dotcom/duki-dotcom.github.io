@@ -81,10 +81,6 @@
         }
 
         .hero {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
-            gap: 32px;
-            align-items: center;
             padding-top: 2rem;
         }
 
@@ -101,19 +97,6 @@
             line-height: 1.6;
         }
 
-        .hero-card {
-            background: rgba(255, 255, 255, 0.14);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 24px;
-            padding: 24px;
-        }
-
-        .hero-card img {
-            width: 100%;
-            display: block;
-            border-radius: 18px;
-        }
-
         @media (max-width: 800px) {
             .content {
                 padding: 1.5rem 20px;
@@ -121,10 +104,6 @@
 
             .navbar {
                 padding: 0.75rem 1rem;
-            }
-
-            .hero {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -156,9 +135,6 @@
             <div>
                 <h1>duki's scripts</h1>
                 <p>placeholder text for the new <strong>duki.lol</strong> home page. you can expect the full update soon, or maybe not. i don't know!</p>
-            </div>
-            <div class="hero-card">
-                <img src="assets/defoko.png" alt="defoko placeholder">
             </div>
         </section>
     </div>
