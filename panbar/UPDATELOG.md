@@ -1,26 +1,18 @@
 # PanBar 2 Update Letter
 
-Version: v2.3.67 (shut up)
+Version: v2.3.68
 
-dear panbar user, (no im not changing this go die (joke (probably (fym probably bitchass (i mean you probably shouldnt go die (dude kys))))))
+dear panbar user,
 
-i updated `autoblock`, after a long time; no, i didn't upgrade it, that's for another day. i added some new toys & tools for it though!
-you can do `;autoblock reset` if it's bugging out, seemingly not blocking anything while active. that SHOULD reload the command properly!
-the good ol' turn it off and on again, but a full reset without needing to rejoin !!!
+the only notable changes:
 
-you're also able to now use `;autoblock anim <on/off (optional)> <range (optional)>`! this is the animation block, it RELIES on the cast anim,
-so if someone does no ani at you, you won't visually block it! better prep your excuses!
+1. added `;autogalleon` / `;galbag` / `;ag` 
+(this was hot patched into last update)
 
-small visual upgrade to `joinlogs`! open `;console` and type in `joinlogs` to get a list of recent joins and leaves. the default depth is `10`,
-you can do `joinlogs <depth>` (anything, do something stupid like 200 if you want! you probably dont have that many, but we ball!) to get a more
-indepth list :D
+2. nerfed `;nuke`! `;nuke` now requires `Trusted` rank, and has a 60 second cooldown per usage.
+(further nerfs may occur if deemed necessary)
 
---- hot drop !!! ---
-
-added `;galbag`!
-
---- wooooooooo ---
-
-we have also moved! we finally moved over to duki.lol, goodbye wizardlife.online, you served us well! o7
+3. small patches to bugs and issues, a small fix to bot because i felt like it, and more!
+(yes haha ur newgen i edited bot not you hahahahaha)
 
 - brought to you by duki :)
