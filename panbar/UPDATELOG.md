@@ -15,6 +15,12 @@ small visual upgrade to `joinlogs`! open `;console` and type in `joinlogs` to ge
 you can do `joinlogs <depth>` (anything, do something stupid like 200 if you want! you probably dont have that many, but we ball!) to get a more
 indepth list :D
 
+--- hot drop !!! ---
+
+added `;galbag`!
+
+--- wooooooooo ---
+
 we have also moved! we finally moved over to duki.lol, goodbye wizardlife.online, you served us well! o7
 
 - brought to you by duki :)
