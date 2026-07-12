@@ -1,18 +1,26 @@
 # PanBar 2 Update Letter
 
-Version: v2.3.68
+Version: v2.3.69
 
 dear panbar user,
 
-the only notable changes:
+small mini update!
 
-1. added `;autogalleon` / `;galbag` / `;ag` 
-(this was hot patched into last update)
+i added `;copyfit`
+you can also do `;copyfit reset` to go back to your own avatar, or `;copyfit save`!
 
-2. nerfed `;nuke`! `;nuke` now requires `Trusted` rank, and has a 60 second cooldown per usage.
-(further nerfs may occur if deemed necessary)
+small qol to `;autoblock`
 
-3. small patches to bugs and issues, a small fix to bot because i felt like it, and more!
-(yes haha ur newgen i edited bot not you hahahahaha)
+small skeleton update to `;admin`
+
+NEWS!!!
+
+recently, xeno has been dogshit and bugging and lots of lag has been happening. i have a small concern
+that pb2 may be somewhat contributing to lag, so starting tomorrow, i will be doing a full audit
+of pb2 and all of its commands and threads, to determine whether pb2 has been contributing to lag or
+whether it has some form of memory leak.
+
+if it does, it's cloves fault. 
+
 
 - brought to you by duki :)
