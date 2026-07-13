@@ -1,6 +1,6 @@
 # PanBar 2 Update Letter
 
-Version: v2.3.8
+Version: v2.3.81
 
 dear panbar user,
 
