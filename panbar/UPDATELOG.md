@@ -1,13 +1,16 @@
 # PanBar 2 Update Letter
 
-Version: v2.3.69
+Version: v2.3.70
 
 dear panbar user,
 
 small mini update!
 
 i added `;copyfit`
-you can also do `;copyfit reset` to go back to your own avatar, or `;copyfit save`!
+you can also do `;copyfit reset` to go back to your own avatar.
+
+i also added `;team` and `;mimic` for team and avatar mirroring.
+i also added `;larp` to load an exact Roblox username's avatar into your character.
 
 small qol to `;autoblock`
 
