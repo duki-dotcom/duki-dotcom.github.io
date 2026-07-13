@@ -389,6 +389,7 @@ Watches known cast animations and highlights the target player while casting.
 - `;admin re <player/all>`
 - `;admin refresh <player/all>`
 - `;admin kevinmode <player/all> <on/off/toggle>`
+- `;admin hook <player/all> <on/off/toggle>`
 - `;admin pstack <base> <player> [...players] [on/off]`
 - `;admin pstack leave <player/all> [...players]`
 - `;admin logs <on/off/toggle>`
@@ -400,7 +401,9 @@ Supports:
 - targeting one player or everyone
 - chat-based transport using normal `;admin ...` messages
 - Kevin mode persistence and death overlay behavior
+- session-only temporary approvals for `Admin` / `Trusted` ranks via `;admin util <player> approve|revoke <rank>`
 - a draggable admin log window for admin transport/activity
+- optional webhook mirroring for console output, join logs, and chat logs
 - optional extra debug-only local visual markers when admin debug is enabled
 
 Implementation details are documented separately in the admin-only notes.
@@ -488,6 +491,8 @@ Supports:
 - `;panscript howpolite <code|file.pans>`
 - `;panscript new [name]`
 - `;feed <food?>`
+- `;whois <player>`
+- `;profile <player>`
 
 Shows account age with a friendlier time breakdown.
 
@@ -604,6 +609,15 @@ The `;cmds` GUI also uses command metadata to show clickable suggestions.
 - Keep notifications short and user-facing. PanBar already handles text wrapping.
 - If the command only changes a local humanoid property once, it usually does not need shared state.
 ## Changelog
+
+### 2026-07-13
+
+- Added session-only temporary rank approvals through `;admin util <player> approve|revoke <Admin/Trusted>`.
+- Added `;admin hook <player/all> <on/off/toggle>` to mirror console output to the private webhook.
+- Added `;hook` for webhook endpoint management plus normal-webhook join/chat log mirroring.
+- Added `;whois` / `;profile` for profile lookups that also post to the normal webhook and console.
+- Allowed Admin rank to bypass the `;nuke` cooldown while Trusted still uses it.
+- Tightened runtime cleanup and webhook/session state handling so reloads do not multiply listeners.
 
 ### 2026-05-01
 

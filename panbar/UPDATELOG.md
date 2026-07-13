@@ -1,29 +1,29 @@
 # PanBar 2 Update Letter
 
-Version: v2.3.70
+Version: v2.3.8
 
 dear panbar user,
 
-small mini update!
+i finished auditing pb2, i found some connections which were not properly closed when reloaded, i found a lot of stuff tbf and fixed it but i dont think that was enough to have caused the shitty lag, so, in conclusion, it IS just xeno being gay!
 
-i added `;copyfit`
-you can also do `;copyfit reset` to go back to your own avatar.
+i added ;hook and a buncha other shit i'll tell you about it in person more lowkey
 
-i also added `;team` and `;mimic` for team and avatar mirroring.
-i also added `;larp` to load an exact Roblox username's avatar into your character.
+NOW, PRESENTING.....
 
-small qol to `;autoblock`
+`;copyfit <plr>`
+`;mimic <plr>`
+`;larp <username>`
 
-small skeleton update to `;admin`
+(those like `;copyfit reset` will bring you back to your defaults btw)
 
-NEWS!!!
+i made a little change to `;nuke` tee hee
 
-recently, xeno has been dogshit and bugging and lots of lag has been happening. i have a small concern
-that pb2 may be somewhat contributing to lag, so starting tomorrow, i will be doing a full audit
-of pb2 and all of its commands and threads, to determine whether pb2 has been contributing to lag or
-whether it has some form of memory leak.
+a bunch of new webhook stuff so we can have logs again yey
 
-if it does, it's cloves fault. 
+AND MORE IMPORTANTLY...
 
+`;whois <plr`/`;profile <plr>`!!!!
+check the brand spanking fucking new pb2 logs channel when using this, you got a
+BUNCh more useful info :))))
 
 - brought to you by duki :)
