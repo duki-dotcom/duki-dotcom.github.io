@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 0 Court Summons</title>
+    <link rel="icon" href="favicon.ico">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white; 
+            color: black; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: #2a2a2a #ffffff;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #ffffff;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #2a2a2a;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #444444;
+        }
+
+        .content {
+            padding: 2rem 50px;
+            max-width: 1200px;
+            flex: 1 0 auto; 
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2a2a2a; 
+            padding: 0.5rem 2rem;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            color: #888;
+        }
+
+        .nav-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 8px;
+            object-fit: contain;
+            flex-shrink: 0;
+            display: block;
+        }
+
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            flex-shrink: 0;
+            display: block;
+        }
+
+        .hero {
+            padding-top: 2rem;
+        }
+
+        .hero h1 {
+            margin: 0 0 20px;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            border-bottom: 2px solid #2a2a2a;
+            padding-bottom: 10px;
+        }
+
+        .summons-body {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-bottom: 40px;
+            min-height: 400px; 
+        }
+
+        .metadata-box {
+            background-color: #f9f9f9;
+            border-left: 4px solid #2a2a2a;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metadata-row {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .metadata-label {
+            font-weight: bold;
+            width: 150px;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        .metadata-value {
+            flex-grow: 1;
+        }
+
+        .company-breakdown {
+            margin-top: 2.5rem;
+        }
+
+        .company-card {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        .company-card h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.3rem;
+            letter-spacing: 0.02em;
+        }
+
+        .company-card h3 a {
+            color: black;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+
+        .company-card h3 a:hover {
+            color: #555;
+        }
+
+        .ceo-tag {
+            font-size: 0.9rem;
+            font-weight: bold;
+            background-color: #2a2a2a;
+            color: white;
+            padding: 2px 8px;
+            display: inline-block;
+            margin-bottom: 10px;
+            cursor: pointer; 
+            transition: background-color 0.2s ease;
+        }
+
+        .ceo-tag:hover {
+            background-color: #444;
+        }
+
+        .footer {
+            position: relative;
+            z-index: 1100; 
+            flex-shrink: 0;
+            background-color: #2a2a2a;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #888;
+        }
+
+        .momo-container {
+            position: fixed;
+            bottom: 0;
+            right: 20px;
+            width: 300px;
+            height: 120px;
+            z-index: 1000; 
+            pointer-events: auto;
+        }
+
+        .bottom-right-peek {
+            position: absolute;
+            bottom: -215px;
+            right: 0;
+            width: 300px;
+            transition: bottom 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                        transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            pointer-events: none;
+        }
+
+        .momo-container:hover .bottom-right-peek {
+            bottom: -10px;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 800px) {
+            .content {
+                padding: 1.5rem 20px;
+            }
+            .navbar {
+                padding: 0.75rem 1rem;
+            }
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .metadata-row {
+                flex-direction: column;
+            }
+            .metadata-label {
+                margin-bottom: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li>
+                <a href="/">
+                    <img src="../assets/miku.webp" alt="miku icon" class="nav-icon">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="/about">
+                    <img src="../assets/neru.webp" alt="neru icon" class="nav-icon">
+                    About
+                </a>
+            </li>
+        </ul>
+
+        <div class="icon">
+            <img src="../assets/teto.webp" alt="teto icon" class="brand-icon">
+        </div>
+    </nav>
+
+    <div class="content">
+        <section class="hero">
+            <div>
+                <h1>Formal Notice of Summons</h1>
+                
+                <div class="summons-body">
+                    <p>
+                        This document serves as an official summons for the individual known as <strong>"aayayron"</strong> to appear before the Top 0 Court. You are required to mount an active defense against a series of serious allegations regarding your recent actions and conduct.
+                    </p>
+
+                    <p>
+                        The core of this summons rests on formal complaints brought forward across our collective group. To put it clearly, you stand accused of the following charges:
+                    </p>
+
+                    <ul>
+                        <li><strong>Fraud:</strong> The deliberate use of deceptive practices, acting in bad faith, and misleading members of the community.</li>
+                        <li><strong>Treason:</strong> Actively working against the security, peace, and shared interests of our allied projects.</li>
+                        <li><strong>Theft:</strong> The unauthorized copying, taking, or handling of proprietary assets and resources that do not belong to you.</li>
+                    </ul>
+
+                    <div class="metadata-box">
+                        <div class="metadata-row">
+                            <div class="metadata-label">Date:</div>
+                            <div class="metadata-value">[ undecided ]</div>
+                        </div>
+                        <div class="metadata-row">
+                            <div class="metadata-label">Timezone:</div>
+                            <div class="metadata-value">[ undecided]</div>
+                        </div>
+                        <div class="metadata-row">
+                            <div class="metadata-label">Location:</div>
+                            <div class="metadata-value">[ undecided ]</div>
+                        </div>
+                    </div>
+
+                    <h2>La haute bourgeoisie</h2>
+                    <p>
+                        This directive is issued collectively by the executive leadership of our four allied organizations, la haute bourgeoisie. Each party has brought forward formal grievances regarding your conduct, requiring your immediate attention:
+                    </p>
+
+                    <div class="company-breakdown">
+                        <div class="company-card">
+                            <h3><a href="/dwlgui">Duki's Wizard Life GUI (DWLGUI)</a></h3>
+                            <div class="ceo-tag">CEO: Duki (DukiDokii)</div>
+                            <p>
+                                As one of the top scripting frameworks, DWLGUI does not tolerate interference. Actions that compromise the tool's integrity, or copy functionality. fall directly under this charge and will be addressed by Duki (DukiDokii).
+                            </p>
+                        </div>
+
+                        <div class="company-card">
+                            <h3><a href="/pb">Panbar & Panbar 2 (PB & PB2)</a></h3>
+                            <div class="ceo-tag">CEO: Duki (DukiDokii)</div>
+                            <p>
+                                The leading scripting framework. Any efforts to mimic these systems, interfere with functionality or actively sabotage our operations fall under the classification of treason against the work of Duki (DukiDokii).
+                            </p>
+                        </div>
+
+                        <div class="company-card">
+                            <h3><a href="/bot">Box of Trix (BOT)</a></h3>
+                            <div class="ceo-tag">CEO: Clove (nyxcielle)</div>
+                            <p>
+                                The heart of design, nostalgia, creation and innovation inside of Wizard Life. Taking, copying, or mimicking BOT assets without explicit permission from Clove (nyxcielle) constitutes a direct act of theft.
+                            </p>
+                        </div>
+
+                        <div class="company-card">
+                            <h3><a href="/top0">Top 0 Farm</a></h3>
+                            <div class="ceo-tag">Co-CEOs: Duki (DukiDokii), Clove (nyxcielle), & Kleen (kleenbeans)</div>
+                            <p>
+                                The collective backbone of our group, as well as Wizard Life as a whole. Undermining Top 0 Farm or sowing discord under the collective oversight of Duki (DukiDokii), Clove (nyxcielle), and Kleen (kleenbeans) will be treated as a direct betrayal of Top 0 Farm.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 2rem;">
+                        <strong>CONSEQUENCE OF DEFAULT:</strong> You are required to acknowledge this notice immediately. Any refusal to cooperate, failure to appear, or attempt to ignore this summons will result in an immediate default judgment. The court reserves the right to proceed with <strong>Newgenification</strong> without further notice.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="momo-container">
+        <img src="../assets/momo.webp" class="bottom-right-peek" alt="Momo" width="300" height="300">
+    </div>
+
+    <footer id="footer" class="footer">
+        <div>Certifications & Contacts</div>
+        <div class="footer-links">
+            <a href="../assets/cert_07648.png">Duki Certification</a>
+            <a href="../assets/cert_07649.webp">Clove Certification</a>
+            <a href="../assets/cert_07649_miku.webp">Clove (Miku) Certification</a>
+            <a href="../assets/cert_07648_gabriel.png">Duki (Gabriel) Certification</a>
+            
+            <span>|</span>
+
+            <a href="mailto:duki@is.notaskid.ong">duki@is.notaskid.ong</a>
+            <a href="mailto:clove@is.notaskid.ong">clove@is.notaskid.ong</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const momoContainer = document.querySelector('.momo-container');
+            const footer = document.querySelector('.footer');
+
+            function adjustMomoPosition() {
+                const footerRect = footer.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+
+                if (footerRect.top < viewportHeight) {
+                    const overlap = viewportHeight - footerRect.top;
+                    momoContainer.style.bottom = `${overlap}px`;
+                } else {
+                    momoContainer.style.bottom = '0px';
+                }
+            }
+
+            window.addEventListener('scroll', adjustMomoPosition);
+            window.addEventListener('resize', adjustMomoPosition);
+            adjustMomoPosition();
+
+            document.querySelectorAll('.ceo-tag').forEach(tag => {
+                tag.addEventListener('click', () => {
+                    footer.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
