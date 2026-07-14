@@ -1,6 +1,6 @@
 # PanBar 2 Update Letter
 
-Version: v2.4.0
+Version: v2.4.01
 
 this update brings something so gorg, i decided to bump it to v2.4!!!
 
