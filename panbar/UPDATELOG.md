@@ -1,29 +1,23 @@
 # PanBar 2 Update Letter
 
-Version: v2.3.82
+Version: v2.4.0
 
-dear panbar user,
+this update brings something so gorg, i decided to bump it to v2.4!!!
 
-i finished auditing pb2, i found some connections which were not properly closed when reloaded, i found a lot of stuff tbf and fixed it but i dont think that was enough to have caused the shitty lag, so, in conclusion, it IS just xeno being gay!
+now, presenting, never seen before in wizard life:
 
-i added ;hook and a buncha other shit i'll tell you about it in person more lowkey
+`;anticlash`
 
-NOW, PRESENTING.....
+i know, right? exciting. `;anticlash` is only available to those with Trusted ranking!
 
-`;copyfit <plr>`
-`;mimic <plr>`
-`;larp <username>`
+example usage:
 
-(those like `;copyfit reset` will bring you back to your defaults btw)
+`;anticlash` - a one-time fix
+`;anticlash on/off` - toggling constant fixing
 
-i made a little change to `;nuke` tee hee
+important note:
 
-a bunch of new webhook stuff so we can have logs again yey
-
-AND MORE IMPORTANTLY...
-
-`;whois <plr`/`;profile <plr>`!!!!
-check the brand spanking fucking new pb2 logs channel when using this, you got a
-BUNCh more useful info :))))
+your executor may not be able to handle this! so beware, it may not work for everyone 
+unfortunately. :(
 
 - brought to you by duki :)
