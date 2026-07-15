@@ -1,23 +1,22 @@
 # PanBar 2 Update Letter
 
-Version: v2.4.01
+Version: v2.4.02
 
-this update brings something so gorg, i decided to bump it to v2.4!!!
+fixes to `;anticlash on/off`
+fixes to longstanding issues with `;inventory` ui
 
-now, presenting, never seen before in wizard life:
+added `;typewriter`
 
-`;anticlash`
+example usage for `;typewriter`:
 
-i know, right? exciting. `;anticlash` is only available to those with Trusted ranking!
-
-example usage:
-
-`;anticlash` - a one-time fix
-`;anticlash on/off` - toggling constant fixing
-
-important note:
-
-your executor may not be able to handle this! so beware, it may not work for everyone 
-unfortunately. :(
+`;typewriter start`
+`;typewriter stop`
+`;typewriter add Hello world!`
+`;typewriter remove 2`
+`;typewriter enable 1`
+`;typewriter disable 5`
+`;typewriter list`
+`;typewriter speed 0.04`
+`;typewriter interval 4`
 
 - brought to you by duki :)
