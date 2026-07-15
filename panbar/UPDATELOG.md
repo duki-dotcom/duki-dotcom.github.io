@@ -1,6 +1,6 @@
 # PanBar 2 Update Letter
 
-Version: v2.4.02
+Version: v2.4.03
 
 fixes to `;anticlash on/off`
 fixes to longstanding issues with `;inventory` ui
