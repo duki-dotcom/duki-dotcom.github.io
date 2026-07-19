@@ -1,22 +1,14 @@
 # PanBar 2 Update Letter
 
-Version: v2.4.05
+Version: v2.4.1
 
-fixes to `;anticlash on/off`
-fixes to longstanding issues with `;inventory` ui
+added some new commands for my goat sakuya izayoi bc bored
 
-added `;typewriter`
+`;jacktheripper`
+`;moonflower`
+`;silentedge`
+`;clockwork`
 
-example usage for `;typewriter`:
-
-`;typewriter start`
-`;typewriter stop`
-`;typewriter add Hello world!`
-`;typewriter remove 2`
-`;typewriter enable 1`
-`;typewriter disable 5`
-`;typewriter list`
-`;typewriter speed 0.04`
-`;typewriter interval 4`
+all of those accept just the `<plr>` arg ok bye
 
 - brought to you by duki :)
