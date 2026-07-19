@@ -1,6 +1,6 @@
 # PanBar 2 Update Letter
 
-Version: v2.4.12
+Version: v2.4.13
 
 added some new commands for my goat sakuya izayoi bc bored
 
