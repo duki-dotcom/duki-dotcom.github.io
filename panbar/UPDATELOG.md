@@ -1,6 +1,6 @@
 # PanBar 2 Update Letter
 
-Version: v2.4.13
+Version: v2.4.14
 
 added some new commands for my goat sakuya izayoi bc bored
 
@@ -15,5 +15,7 @@ all of those accept just the `<plr>` arg ok bye
 and now
 
 `;halo <plr> <bool>`
+
+and `;anticlash` changes
 
 - brought to you by duki :)
