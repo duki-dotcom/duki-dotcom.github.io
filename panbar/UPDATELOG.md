@@ -1,6 +1,6 @@
 # PanBar 2 Update Letter
 
-Version: v2.4.11
+Version: v2.4.12
 
 added some new commands for my goat sakuya izayoi bc bored
 
@@ -8,7 +8,12 @@ added some new commands for my goat sakuya izayoi bc bored
 `;moonflower`
 `;silentedge`
 `;clockwork`
+`;phantom`
 
 all of those accept just the `<plr>` arg ok bye
+
+and now
+
+`;halo <plr> <bool>`
 
 - brought to you by duki :)
