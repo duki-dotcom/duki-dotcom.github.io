@@ -1,23 +1,18 @@
 # PanBar 2 Update Letter
 
-Version: v2.4.2
+Version: v2.4.3
 
-added some new commands for my goat sakuya izayoi bc bored
+mostly bugfixes and patches (hopefully, haven't tested)
 
-`;jacktheripper`
-`;moonflower`
-`;silentedge`
-`;clockwork`
-`;phantom`
+1. a fix to the long standing errors on startup
+2. `;admin exec` fixes
+3. fix to `;typewriter` persistence
+4. a state toggle for `;inventory` to swap between normal wl and bot
+5. fixes to allow `;hook joinlogs/chatlogs` to work
 
-all of those accept just the `<plr>` arg ok bye
+and also on the topic of `;hook joinlogs/chatlogs`...
+i tripled the log history since it was lowkey short as fuh
 
-and now
-
-`;halo <plr> <bool>`
-
-and `;anticlash` changes
-
-added `;broom <speed> <bool>`
+ok byebye
 
 - brought to you by duki :)
