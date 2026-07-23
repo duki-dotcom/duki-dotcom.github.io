@@ -1,6 +1,6 @@
 # PanBar 2 Update Letter
 
-Version: v2.4.42
+Version: v2.4.43
 
 lots of patches and optimisations !!!
 
