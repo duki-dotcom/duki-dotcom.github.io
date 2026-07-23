@@ -1,6 +1,6 @@
 # PanBar 2 Update Letter
 
-Version: v2.4.4
+Version: v2.4.41
 
 lots of patches and optimisations !!!
 
@@ -13,5 +13,9 @@ anyway i also added a bunch of new fun utility B)
 + `;skyarena`
 + `;sz`
 + `;supernova` (admin only..)
+
+quick addition
+
++ `;blockesp`
 
 - brought to you by duki :)
