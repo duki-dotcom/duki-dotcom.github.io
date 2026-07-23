@@ -1,18 +1,17 @@
 # PanBar 2 Update Letter
 
-Version: v2.4.3
+Version: v2.4.4
 
-mostly bugfixes and patches (hopefully, haven't tested)
+lots of patches and optimisations !!!
 
-1. a fix to the long standing errors on startup
-2. `;admin exec` fixes
-3. fix to `;typewriter` persistence
-4. a state toggle for `;inventory` to swap between normal wl and bot
-5. fixes to allow `;hook joinlogs/chatlogs` to work
+the errors on startup were very silly, it was mostly just old wizardlife.online usage that i
+happened to forget to make duki.lol.... oops!
 
-and also on the topic of `;hook joinlogs/chatlogs`...
-i tripled the log history since it was lowkey short as fuh
+anyway i also added a bunch of new fun utility B)
 
-ok byebye
++ `;shapes`
++ `;skyarena`
++ `;sz`
++ `;supernova` (admin only..)
 
 - brought to you by duki :)
