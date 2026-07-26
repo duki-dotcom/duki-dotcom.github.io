@@ -1,6 +1,6 @@
 # PanBar 2 Update Letter
 
-Version: v2.4.5
+Version: v2.4.51
 
 possibly a fix to `;admin exec`
 
