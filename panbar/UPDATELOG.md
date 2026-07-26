@@ -1,30 +1,21 @@
 # PanBar 2 Update Letter
 
-Version: v2.4.48
+Version: v2.4.5
 
-lots of patches and optimisations !!!
+possibly a fix to `;admin exec`
 
-the errors on startup were very silly, it was mostly just old wizardlife.online usage that i
-happened to forget to make duki.lol.... oops!
+tried to reinforce `;blockesp` so it would stop being silly when people disappear
 
-anyway i also added a bunch of new fun utility B)
+and added `;protect <plr>`
 
-+ `;shapes`
-+ `;skyarena`
-+ `;sz`
-+ `;supernova` (admin only..)
-
-quick addition for .41
-
-+ `;blockesp`
-
-added subcommands for .42
-
-+ `;blockesp detect on/off`
-
-+ `;blockesp exclude <plr>`
-+ `;blockesp include <plr>`
-
-and yes, by default everyone is included.
+`;protect <player>`
+`;protect <player> periculum`
+`;protect segments <num>`
+`;protect area <radius>`
+`;protect heal <bool>`
+`;protect height <studs>`
+`;protect speed <seconds>`
+`;protect proj <hover/fall>`
+`;protect off`
 
 - brought to you by duki :)
