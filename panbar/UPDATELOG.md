@@ -1,21 +1,15 @@
 # PanBar 2 Update Letter
 
-Version: v2.4.51
+Version: v2.4.52
 
-possibly a fix to `;admin exec`
+well a lot has changed
 
-tried to reinforce `;blockesp` so it would stop being silly when people disappear
+;admin exec works
 
-and added `;protect <plr>`
+discord integrations
 
-`;protect <player>`
-`;protect <player> periculum`
-`;protect segments <num>`
-`;protect area <radius>`
-`;protect heal <bool>`
-`;protect height <studs>`
-`;protect speed <seconds>`
-`;protect proj <hover/fall>`
-`;protect off`
+live web map
+
+blah blah
 
 - brought to you by duki :)
