@@ -1,5 +1,5 @@
 {
-  "version": "v2.4.592",
+  "version": "v2.4.593",
   "commands": [
     "cmds",
     "effect",
@@ -131,7 +131,7 @@
     "bhop": "v2.4.53",
     "fire": "v2.4.53",
     "killaura": "v2.4.53",
-    "nuke": "v2.4.53",
+    "nuke": "v2.4.54",
     "curse": "v2.4.53",
     "rain": "v2.4.53",
     "fireworks": "v2.4.53",
@@ -209,7 +209,7 @@
     "patfix": "v2.4.53",
     "safe": "v2.4.53",
     "deletevelocity": "v2.4.53",
-    "awaken": "v2.4.592",
+    "awaken": "v2.4.593",
     "gravity": "v2.4.53",
     "hipheight": "v2.4.53",
     "sit": "v2.4.53",
