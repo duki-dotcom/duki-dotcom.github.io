@@ -296,6 +296,13 @@ Remote version endpoint:
 
 - `version.json` at `BaseUrl`
 
+Index format:
+
+- `index.json` keeps the command name list for ordering and compatibility
+- `index.json` also carries per-command update versions in `commandVersions`
+- the cache manifest stores the last seen version for each command in `CommandVersions`
+- when the global version changes, PanBar compares per-command versions and only re-downloads files whose update version changed
+
 Version format policy:
 
 - Use semantic-style tags like `v2.0.1`, `v2.0.2`, `v2.0.3`
@@ -312,7 +319,7 @@ Recommended `version.json` shape:
 Behavior:
 
 - if remote version equals cached manifest version, PanBar prefers cached files for faster startup
-- if remote version differs, PanBar fetches and refreshes cache files, then updates manifest version
+- if remote version differs, PanBar fetches the latest index, refreshes only the commands whose update version changed, then updates the manifest version
 - if remote version cannot be fetched, PanBar prefers cache when cache is complete
 - if cache is missing/incomplete, PanBar falls back to remote fetch paths
 
