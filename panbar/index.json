@@ -1,5 +1,5 @@
 {
-    "version":  "v2.4.595",
+    "version":  "v2.4.596",
     "commands":  [
                      {
                          "name":  "addconfig",
@@ -47,7 +47,7 @@
                      },
                      {
                          "name":  "awaken",
-                         "version":  "v2.4.595"
+                         "version":  "v2.4.596"
                      },
                      {
                          "name":  "bhop",
