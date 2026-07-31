@@ -1,5 +1,5 @@
 {
-  "version": "v2.4.55",
+  "version": "v2.4.56",
   "commands": [
     "cmds",
     "effect",
@@ -209,7 +209,7 @@
     "patfix": "v2.4.53",
     "safe": "v2.4.53",
     "deletevelocity": "v2.4.53",
-    "awaken": "v2.4.55",
+    "awaken": "v2.4.56",
     "gravity": "v2.4.53",
     "hipheight": "v2.4.53",
     "sit": "v2.4.53",
