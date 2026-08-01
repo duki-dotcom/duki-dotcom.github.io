@@ -1,10 +1,14 @@
 # PanBar 2 Update Letter
 
-Version: v2.4.594
+Version: v2.4.597
 
-almost forgot to bump this but hi
+generally just work on `;awaken`, `;cero` (THIS IS MINE ONLY MUAHAHAHA)
 
-i will just tell you in person im too lazy
-bye
+`;nuke freeze <plr>` -- does not kill, will freeze
+`;nuke clean <plr>`
+`;nuke nofire <plr>`
+`;nuke burn <plr>` -- does not kill
+
+`;nuke nuke nuke nuke nuke` -- a work in progress but exists up to 5 times!
 
 - brought to you by duki :)
