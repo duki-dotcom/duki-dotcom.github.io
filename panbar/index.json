@@ -1,5 +1,5 @@
 {
-    "version":  "v2.4.597",
+    "version":  "v2.4.598",
     "commands":  [
                      {
                          "name":  "addconfig",
@@ -47,7 +47,7 @@
                      },
                     {
                          "name":  "awaken",
-                         "version":  "v2.4.597"
+                         "version":  "v2.4.598"
                      },
                      {
                          "name":  "bhop",
@@ -111,11 +111,11 @@
                      },
                      {
                          "name":  "copyfit",
-                         "version":  "v2.4.597"
+                         "version":  "v2.4.598"
                      },
                      {
                          "name":  "cero",
-                         "version":  "v2.4.597"
+                         "version":  "v2.4.598"
                      },
                      {
                          "name":  "crush",
