@@ -45,7 +45,7 @@
                          "name":  "autogalleon",
                          "version":  "v2.4.53"
                      },
-                     {
+                    {
                          "name":  "awaken",
                          "version":  "v2.4.596"
                      },
@@ -105,13 +105,13 @@
                          "name":  "console",
                          "version":  "v2.4.53"
                      },
-                     {
+                    {
                          "name":  "copyanim",
                          "version":  "v2.4.53"
                      },
                      {
                          "name":  "copyfit",
-                         "version":  "v2.4.53"
+                         "version":  "v2.4.596"
                      },
                      {
                          "name":  "crush",
