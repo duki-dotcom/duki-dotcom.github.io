@@ -1,5 +1,5 @@
 {
-    "version":  "v2.4.598",
+    "version":  "v2.4.599",
     "commands":  [
                      {
                          "name":  "addconfig",
@@ -45,9 +45,13 @@
                          "name":  "autogalleon",
                          "version":  "v2.4.53"
                      },
-                    {
+                     {
                          "name":  "awaken",
                          "version":  "v2.4.598"
+                     },
+                     {
+                         "name":  "airwalk",
+                         "version":  "v2.4.599"
                      },
                      {
                          "name":  "bhop",
