@@ -1,5 +1,5 @@
 {
-    "version":  "v2.4.600",
+    "version":  "v2.4.601",
     "commands":  [
                      {
                          "name":  "addconfig",
@@ -51,7 +51,7 @@
                      },
                      {
                          "name":  "airwalk",
-                         "version":  "v2.4.600"
+                         "version":  "v2.4.601"
                      },
                      {
                          "name":  "bhop",
