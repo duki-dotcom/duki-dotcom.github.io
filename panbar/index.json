@@ -390,6 +390,10 @@
                          "version":  "v2.4.53"
                      },
                      {
+                         "name":  "superblockbreak",
+                         "version":  "v2.4.606"
+                     },
+                     {
                          "name":  "supernova",
                          "version":  "v2.4.594"
                      },
