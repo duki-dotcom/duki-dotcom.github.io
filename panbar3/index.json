@@ -1,6 +1,6 @@
 {
     "schemaVersion": 1,
-    "version": "pb3-20260831221050",
+    "version": "pb3-20260831221837",
     "hashAlgorithm": "djb2-mod-2147483647",
     "files": {
         "API/Commands.lua": {
@@ -25,7 +25,7 @@
             "hash": "djb2:1434924679"
         },
         "Core/Config.lua": {
-            "hash": "djb2:1585152924"
+            "hash": "djb2:1793851289"
         },
         "Core/Events.lua": {
             "hash": "djb2:1840609088"
@@ -46,7 +46,7 @@
             "hash": "djb2:575673706"
         },
         "Core/Runtime.lua": {
-            "hash": "djb2:909533755"
+            "hash": "djb2:1167802293"
         },
         "Core/State.lua": {
             "hash": "djb2:42110942"
@@ -55,7 +55,7 @@
             "hash": "djb2:2115050451"
         },
         "Systems/Input.lua": {
-            "hash": "djb2:1719050206"
+            "hash": "djb2:115333718"
         },
         "Systems/Networking.lua": {
             "hash": "djb2:587108158"
@@ -70,7 +70,7 @@
             "hash": "djb2:1190062592"
         },
         "Systems/UI.lua": {
-            "hash": "djb2:856847231"
+            "hash": "djb2:1815898266"
         },
         "Systems/Windows.lua": {
             "hash": "djb2:229239465"
