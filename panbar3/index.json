@@ -1,6 +1,6 @@
 {
     "schemaVersion": 1,
-    "version": "pb3-20260831221837",
+    "version": "pb3-20260831222949",
     "hashAlgorithm": "djb2-mod-2147483647",
     "files": {
         "API/Commands.lua": {
@@ -70,7 +70,7 @@
             "hash": "djb2:1190062592"
         },
         "Systems/UI.lua": {
-            "hash": "djb2:1815898266"
+            "hash": "djb2:2117394512"
         },
         "Systems/Windows.lua": {
             "hash": "djb2:229239465"
