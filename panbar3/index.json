@@ -1,0 +1,88 @@
+{
+    "schemaVersion": 1,
+    "version": "pb3-20260831221050",
+    "hashAlgorithm": "djb2-mod-2147483647",
+    "files": {
+        "API/Commands.lua": {
+            "hash": "djb2:2068446905"
+        },
+        "API/Events.lua": {
+            "hash": "djb2:1449697171"
+        },
+        "API/Runtime.lua": {
+            "hash": "djb2:1255471180"
+        },
+        "API/UI.lua": {
+            "hash": "djb2:2001293751"
+        },
+        "Commands/Builtins/cmds.lua": {
+            "hash": "djb2:1780152269"
+        },
+        "Commands/Loader.lua": {
+            "hash": "djb2:1544965501"
+        },
+        "Commands/Registry.lua": {
+            "hash": "djb2:1434924679"
+        },
+        "Core/Config.lua": {
+            "hash": "djb2:1585152924"
+        },
+        "Core/Events.lua": {
+            "hash": "djb2:1840609088"
+        },
+        "Core/Init.lua": {
+            "hash": "djb2:395753872"
+        },
+        "Core/Lifecycle.lua": {
+            "hash": "djb2:973236133"
+        },
+        "Core/Loader.lua": {
+            "hash": "djb2:365369895"
+        },
+        "Core/Registry.lua": {
+            "hash": "djb2:2092353459"
+        },
+        "Core/Reload.lua": {
+            "hash": "djb2:575673706"
+        },
+        "Core/Runtime.lua": {
+            "hash": "djb2:909533755"
+        },
+        "Core/State.lua": {
+            "hash": "djb2:42110942"
+        },
+        "Systems/History.lua": {
+            "hash": "djb2:2115050451"
+        },
+        "Systems/Input.lua": {
+            "hash": "djb2:1719050206"
+        },
+        "Systems/Networking.lua": {
+            "hash": "djb2:587108158"
+        },
+        "Systems/Notifications.lua": {
+            "hash": "djb2:467885720"
+        },
+        "Systems/Suggestions.lua": {
+            "hash": "djb2:278246761"
+        },
+        "Systems/Themes.lua": {
+            "hash": "djb2:1190062592"
+        },
+        "Systems/UI.lua": {
+            "hash": "djb2:856847231"
+        },
+        "Systems/Windows.lua": {
+            "hash": "djb2:229239465"
+        },
+        "Utils/Init.lua": {
+            "hash": "djb2:1177862484"
+        },
+        "Utils/Strings.lua": {
+            "hash": "djb2:1959041499"
+        },
+        "main.lua": {
+            "hash": "djb2:382060315"
+        }
+    }
+}
