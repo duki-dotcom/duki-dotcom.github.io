@@ -1,6 +1,6 @@
 {
     "schemaVersion": 1,
-    "version": "pb3-20261024174042",
+    "version": "pb3-20261024174954",
     "hashAlgorithm": "djb2-mod-2147483647",
     "files": {
         "Commands/Builtins.lua": {
@@ -43,7 +43,7 @@
             "hash": "djb2:1916992307"
         },
         "main.lua": {
-            "hash": "djb2:925775001"
+            "hash": "djb2:1747138460"
         }
     }
 }
