@@ -1,25 +1,28 @@
 {
     "schemaVersion": 1,
-    "version": "pb3-20261024181642",
+    "version": "pb3-20261024185642",
     "hashAlgorithm": "djb2-mod-2147483647",
     "files": {
         "Auth/LegacyKey.lua": {
             "hash": "djb2:1503268508"
         },
+        "Commands/Builder.lua": {
+            "hash": "djb2:2013257173"
+        },
         "Commands/Builtins.lua": {
-            "hash": "djb2:648022827"
+            "hash": "djb2:63563763"
         },
         "Commands/Parser.lua": {
             "hash": "djb2:251259540"
         },
         "Commands/Registry.lua": {
-            "hash": "djb2:640253847"
+            "hash": "djb2:783836022"
         },
         "Commands/Search.lua": {
             "hash": "djb2:1188144532"
         },
         "Core/App.lua": {
-            "hash": "djb2:1586341536"
+            "hash": "djb2:952710102"
         },
         "Core/Features.lua": {
             "hash": "djb2:1278172008"
@@ -33,17 +36,26 @@
         "Services/Errors.lua": {
             "hash": "djb2:299622151"
         },
+        "Services/FileSystem.lua": {
+            "hash": "djb2:1315549126"
+        },
         "Services/History.lua": {
             "hash": "djb2:295054955"
         },
         "Services/Log.lua": {
             "hash": "djb2:280052627"
         },
+        "Services/Notifications.lua": {
+            "hash": "djb2:906684726"
+        },
         "Services/Session.lua": {
             "hash": "djb2:1698169472"
         },
         "Services/Terminal.lua": {
-            "hash": "djb2:1539158907"
+            "hash": "djb2:1790938383"
+        },
+        "Services/TerminalCommands.lua": {
+            "hash": "djb2:389077180"
         },
         "Services/Theme.lua": {
             "hash": "djb2:349473491"
@@ -52,25 +64,34 @@
             "hash": "djb2:832828377"
         },
         "Themes/Sky.lua": {
-            "hash": "djb2:1676649096"
+            "hash": "djb2:1718248882"
+        },
+        "UI/CommandDetails.lua": {
+            "hash": "djb2:810855324"
+        },
+        "UI/Console.lua": {
+            "hash": "djb2:925517472"
         },
         "UI/Controls.lua": {
-            "hash": "djb2:1902955261"
+            "hash": "djb2:1904538775"
         },
         "UI/Input.lua": {
-            "hash": "djb2:612498778"
+            "hash": "djb2:1658065554"
         },
         "UI/Login.lua": {
             "hash": "djb2:1779686720"
         },
+        "UI/Notifications.lua": {
+            "hash": "djb2:1744920887"
+        },
         "UI/Shell.lua": {
-            "hash": "djb2:1586545331"
+            "hash": "djb2:105811999"
         },
         "UI/Window.lua": {
-            "hash": "djb2:334809153"
+            "hash": "djb2:402634686"
         },
         "main.lua": {
-            "hash": "djb2:380884140"
+            "hash": "djb2:1479842400"
         }
     }
 }
