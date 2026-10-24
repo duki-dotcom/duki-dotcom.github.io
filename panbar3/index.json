@@ -1,16 +1,19 @@
 {
     "schemaVersion": 1,
-    "version": "pb3-20261024185642",
+    "version": "pb3-20261024201921",
     "hashAlgorithm": "djb2-mod-2147483647",
     "files": {
         "Auth/LegacyKey.lua": {
             "hash": "djb2:1503268508"
         },
         "Commands/Builder.lua": {
-            "hash": "djb2:2013257173"
+            "hash": "djb2:37687554"
         },
         "Commands/Builtins.lua": {
             "hash": "djb2:63563763"
+        },
+        "Commands/Gameplay.lua": {
+            "hash": "djb2:1742617313"
         },
         "Commands/Parser.lua": {
             "hash": "djb2:251259540"
@@ -22,7 +25,7 @@
             "hash": "djb2:1188144532"
         },
         "Core/App.lua": {
-            "hash": "djb2:952710102"
+            "hash": "djb2:2114703641"
         },
         "Core/Features.lua": {
             "hash": "djb2:1278172008"
@@ -32,6 +35,63 @@
         },
         "Core/Signal.lua": {
             "hash": "djb2:1009750403"
+        },
+        "ESP/Commands.lua": {
+            "hash": "djb2:722249000"
+        },
+        "ESP/Config.lua": {
+            "hash": "djb2:428779503"
+        },
+        "ESP/Projection.lua": {
+            "hash": "djb2:771414138"
+        },
+        "ESP/Renderer.lua": {
+            "hash": "djb2:2112702707"
+        },
+        "Game/Commands/age.lua": {
+            "hash": "djb2:1095755134"
+        },
+        "Game/Commands/autoblock.lua": {
+            "hash": "djb2:374567116"
+        },
+        "Game/Commands/deletevelocity.lua": {
+            "hash": "djb2:1337202098"
+        },
+        "Game/Commands/effect.lua": {
+            "hash": "djb2:542906110"
+        },
+        "Game/Commands/fire.lua": {
+            "hash": "djb2:1449044326"
+        },
+        "Game/Commands/gravity.lua": {
+            "hash": "djb2:517976772"
+        },
+        "Game/Commands/jumpheight.lua": {
+            "hash": "djb2:1814834195"
+        },
+        "Game/Commands/resetanims.lua": {
+            "hash": "djb2:273652547"
+        },
+        "Game/Commands/sit.lua": {
+            "hash": "djb2:1555118530"
+        },
+        "Game/Commands/spell.lua": {
+            "hash": "djb2:584921117"
+        },
+        "Game/Commands/walkspeed.lua": {
+            "hash": "djb2:335794778"
+        },
+        "Game/Players.lua": {
+            "hash": "djb2:91490960"
+        },
+        "Game/Spectate.lua": {
+            "hash": "djb2:781401889"
+        },
+        "Game/Spells.lua": {
+            "hash": "djb2:1302775435"
+        },
+        "Game/Tasks.lua": {
+            "hash": "djb2:383038338"
         },
         "Services/Errors.lua": {
             "hash": "djb2:299622151"
@@ -58,13 +118,19 @@
             "hash": "djb2:389077180"
         },
         "Services/Theme.lua": {
-            "hash": "djb2:349473491"
+            "hash": "djb2:1344435355"
         },
         "Services/Transport.lua": {
             "hash": "djb2:832828377"
         },
+        "Themes/Cherry.lua": {
+            "hash": "djb2:1285110878"
+        },
+        "Themes/Moon.lua": {
+            "hash": "djb2:1483214803"
+        },
         "Themes/Sky.lua": {
-            "hash": "djb2:1718248882"
+            "hash": "djb2:1906495701"
         },
         "UI/CommandDetails.lua": {
             "hash": "djb2:810855324"
@@ -75,6 +141,9 @@
         "UI/Controls.lua": {
             "hash": "djb2:1904538775"
         },
+        "UI/ESPSettings.lua": {
+            "hash": "djb2:62466772"
+        },
         "UI/Input.lua": {
             "hash": "djb2:1658065554"
         },
@@ -82,16 +151,19 @@
             "hash": "djb2:1779686720"
         },
         "UI/Notifications.lua": {
-            "hash": "djb2:1744920887"
+            "hash": "djb2:1566721450"
         },
         "UI/Shell.lua": {
-            "hash": "djb2:105811999"
+            "hash": "djb2:2014003571"
+        },
+        "UI/Toast.lua": {
+            "hash": "djb2:1176782755"
         },
         "UI/Window.lua": {
             "hash": "djb2:402634686"
         },
         "main.lua": {
-            "hash": "djb2:1479842400"
+            "hash": "djb2:1393478301"
         }
     }
 }
