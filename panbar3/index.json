@@ -1,6 +1,6 @@
 {
     "schemaVersion": 1,
-    "version": "pb3-20261024201921",
+    "version": "pb3-20261025031839",
     "hashAlgorithm": "djb2-mod-2147483647",
     "files": {
         "Auth/LegacyKey.lua": {
@@ -13,7 +13,10 @@
             "hash": "djb2:63563763"
         },
         "Commands/Gameplay.lua": {
-            "hash": "djb2:1742617313"
+            "hash": "djb2:146652444"
+        },
+        "Commands/Hotkeys.lua": {
+            "hash": "djb2:1149059767"
         },
         "Commands/Parser.lua": {
             "hash": "djb2:251259540"
@@ -24,8 +27,11 @@
         "Commands/Search.lua": {
             "hash": "djb2:1188144532"
         },
+        "Commands/Touhou.lua": {
+            "hash": "djb2:1121365958"
+        },
         "Core/App.lua": {
-            "hash": "djb2:2114703641"
+            "hash": "djb2:1715390801"
         },
         "Core/Features.lua": {
             "hash": "djb2:1278172008"
@@ -35,6 +41,15 @@
         },
         "Core/Signal.lua": {
             "hash": "djb2:1009750403"
+        },
+        "Danmaku/Catalog.lua": {
+            "hash": "djb2:241866571"
+        },
+        "Danmaku/Controller.lua": {
+            "hash": "djb2:1031732487"
+        },
+        "Danmaku/Patterns.lua": {
+            "hash": "djb2:1965767014"
         },
         "ESP/Commands.lua": {
             "hash": "djb2:722249000"
@@ -51,8 +66,14 @@
         "Game/Commands/age.lua": {
             "hash": "djb2:1095755134"
         },
+        "Game/Commands/anchor.lua": {
+            "hash": "djb2:1143290160"
+        },
         "Game/Commands/autoblock.lua": {
             "hash": "djb2:374567116"
+        },
+        "Game/Commands/broom.lua": {
+            "hash": "djb2:800859444"
         },
         "Game/Commands/deletevelocity.lua": {
             "hash": "djb2:1337202098"
@@ -92,6 +113,24 @@
         },
         "Game/Tasks.lua": {
             "hash": "djb2:383038338"
+        },
+        "Hotkeys/Input.lua": {
+            "hash": "djb2:601808130"
+        },
+        "Hotkeys/Keys.lua": {
+            "hash": "djb2:1390097184"
+        },
+        "Hotkeys/Profiles.lua": {
+            "hash": "djb2:1869225305"
+        },
+        "Hotkeys/Runner.lua": {
+            "hash": "djb2:216724432"
+        },
+        "Hotkeys/Storage.lua": {
+            "hash": "djb2:324247989"
+        },
+        "Hotkeys/TouhouPresets.lua": {
+            "hash": "djb2:1468956570"
         },
         "Services/Errors.lua": {
             "hash": "djb2:299622151"
@@ -144,8 +183,11 @@
         "UI/ESPSettings.lua": {
             "hash": "djb2:62466772"
         },
+        "UI/HotkeySettings.lua": {
+            "hash": "djb2:568199107"
+        },
         "UI/Input.lua": {
-            "hash": "djb2:1658065554"
+            "hash": "djb2:106806760"
         },
         "UI/Login.lua": {
             "hash": "djb2:1779686720"
@@ -154,13 +196,13 @@
             "hash": "djb2:1566721450"
         },
         "UI/Shell.lua": {
-            "hash": "djb2:2014003571"
+            "hash": "djb2:761536780"
         },
         "UI/Toast.lua": {
             "hash": "djb2:1176782755"
         },
         "UI/Window.lua": {
-            "hash": "djb2:402634686"
+            "hash": "djb2:411474105"
         },
         "main.lua": {
             "hash": "djb2:1393478301"
