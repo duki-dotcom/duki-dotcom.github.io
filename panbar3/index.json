@@ -1,6 +1,6 @@
 {
     "schemaVersion": 1,
-    "version": "pb3-20261025031839",
+    "version": "pb3-20261025032638",
     "hashAlgorithm": "djb2-mod-2147483647",
     "files": {
         "Auth/LegacyKey.lua": {
@@ -46,10 +46,10 @@
             "hash": "djb2:241866571"
         },
         "Danmaku/Controller.lua": {
-            "hash": "djb2:1031732487"
+            "hash": "djb2:331859654"
         },
         "Danmaku/Patterns.lua": {
-            "hash": "djb2:1965767014"
+            "hash": "djb2:131685007"
         },
         "ESP/Commands.lua": {
             "hash": "djb2:722249000"
