@@ -1,6 +1,6 @@
 {
     "schemaVersion": 1,
-    "version": "pb3-20261025032638",
+    "version": "pb3-20261025175545",
     "hashAlgorithm": "djb2-mod-2147483647",
     "files": {
         "Auth/LegacyKey.lua": {
@@ -12,8 +12,14 @@
         "Commands/Builtins.lua": {
             "hash": "djb2:63563763"
         },
+        "Commands/Desmos.lua": {
+            "hash": "djb2:400534668"
+        },
+        "Commands/Embrace.lua": {
+            "hash": "djb2:1820852858"
+        },
         "Commands/Gameplay.lua": {
-            "hash": "djb2:146652444"
+            "hash": "djb2:66997082"
         },
         "Commands/Hotkeys.lua": {
             "hash": "djb2:1149059767"
@@ -43,13 +49,28 @@
             "hash": "djb2:1009750403"
         },
         "Danmaku/Catalog.lua": {
-            "hash": "djb2:241866571"
+            "hash": "djb2:1044005119"
         },
         "Danmaku/Controller.lua": {
-            "hash": "djb2:331859654"
+            "hash": "djb2:516417144"
         },
         "Danmaku/Patterns.lua": {
-            "hash": "djb2:131685007"
+            "hash": "djb2:2029997735"
+        },
+        "Divine/Budget.lua": {
+            "hash": "djb2:1165226363"
+        },
+        "Divine/Config.lua": {
+            "hash": "djb2:680848064"
+        },
+        "Divine/Geometry.lua": {
+            "hash": "djb2:730461977"
+        },
+        "Divine/Rig.lua": {
+            "hash": "djb2:1131806753"
+        },
+        "Divine/Service.lua": {
+            "hash": "djb2:1831001575"
         },
         "ESP/Commands.lua": {
             "hash": "djb2:722249000"
@@ -62,6 +83,9 @@
         },
         "ESP/Renderer.lua": {
             "hash": "djb2:2112702707"
+        },
+        "Effects/Math3.lua": {
+            "hash": "djb2:975124564"
         },
         "Game/Commands/age.lua": {
             "hash": "djb2:1095755134"
@@ -113,6 +137,18 @@
         },
         "Game/Tasks.lua": {
             "hash": "djb2:383038338"
+        },
+        "Graph/Expression.lua": {
+            "hash": "djb2:380631359"
+        },
+        "Graph/Model.lua": {
+            "hash": "djb2:1523956259"
+        },
+        "Graph/Renderer.lua": {
+            "hash": "djb2:91273544"
+        },
+        "Graph/Sampler.lua": {
+            "hash": "djb2:1909226357"
         },
         "Hotkeys/Input.lua": {
             "hash": "djb2:601808130"
@@ -183,6 +219,9 @@
         "UI/ESPSettings.lua": {
             "hash": "djb2:62466772"
         },
+        "UI/Graph.lua": {
+            "hash": "djb2:1706004923"
+        },
         "UI/HotkeySettings.lua": {
             "hash": "djb2:568199107"
         },
@@ -196,7 +235,7 @@
             "hash": "djb2:1566721450"
         },
         "UI/Shell.lua": {
-            "hash": "djb2:761536780"
+            "hash": "djb2:1145607093"
         },
         "UI/Toast.lua": {
             "hash": "djb2:1176782755"
@@ -205,7 +244,7 @@
             "hash": "djb2:411474105"
         },
         "main.lua": {
-            "hash": "djb2:1393478301"
+            "hash": "djb2:118123842"
         }
     }
 }
