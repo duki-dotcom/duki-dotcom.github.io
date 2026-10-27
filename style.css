@@ -23,7 +23,7 @@ html {
 
 ::-webkit-scrollbar-thumb {
     background-color: #2a2a2a;
-    border-radius: 4px;
+    border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {

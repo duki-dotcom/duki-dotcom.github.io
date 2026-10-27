@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>duki.lol - kleenday</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        body {
+            color: white;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(255, 87, 87);
+        }
+
+        .content {
+            padding: 2rem 50px;
+            max-width: 1200px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgb(255, 60, 60);
+            padding: 0.5rem 2rem;
+            color: #ffbbbb;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            color: #ffa8a8;
+        }
+
+        .teto-container {
+            position: fixed;
+            bottom: 0;
+            right: 20px;
+            width: 300px;
+            height: 120px;
+            z-index: 1000;
+        }
+
+        .bottom-right-peek {
+            position: absolute;
+            bottom: -215px;
+            right: 0;
+            width: 300px;
+            transition: bottom 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                        transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            pointer-events: none;
+        }
+
+        .teto-container:hover .bottom-right-peek {
+            bottom: -10px;
+            transform: scale(1.05);
+        }
+
+        .hero {
+            padding-top: 2rem;
+        }
+
+        .hero h1 {
+            margin: 0 0 12px;
+            font-size: clamp(3rem, 8vw, 6rem);
+            letter-spacing: 0.02em;
+        }
+
+        .hero p {
+            margin: 0 0 18px;
+            max-width: 620px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 800px) {
+            .content {
+                padding: 1.5rem 20px;
+            }
+
+            .navbar {
+                padding: 0.75rem 1rem;
+            }
+        }
+    </style>
+    <script src="/kleenday.js" defer></script>
+    <link rel="stylesheet" href="/retro.css">
+</head>
+<body class="theme-kleenday">
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li>
+                <a href="/">
+                    <img src="/assets/miku.webp" alt="miku" style="width: 30px; height: 30px; margin-right: 6px;">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="/about">
+                    <img src="/assets/defoko.png" alt="defoko" style="width: 30px; height: 30px; margin-right: 6px;">
+                    About
+                </a>
+            </li>
+        </ul>
+
+        <div class="icon">
+            <img src="/assets/teto.webp" alt="icon" width="40">
+        </div>
+    </nav>
+
+    <div class="content">
+        <section class="hero">
+            <div>
+                <h1>Kleenday</h1>
+                <p>happy kleenday!</p>
+                <!-- Add Kleenday content here. -->
+                <section class="panel"><h2>to kleen</h2><p>wow, the second kleenday!! i'm so very glad i'm here to get to wish you another happy kleenday, truly, being your friend has been incredible and i look forward to the next year. i hope we can make many more memories for next year! -duki</p></section>
+                <section class="kleenday-gallery" aria-label="Kleenday gallery">
+                    <div class="gallery-image"><img src="/assets/kleenday/05.png" alt="Kleenday gallery image 5" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/14.png" alt="Kleenday gallery image 14" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/04.png" alt="Kleenday gallery image 4" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/07.png" alt="Kleenday gallery image 7" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/15.png" alt="Kleenday gallery image 15" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/02.png" alt="Kleenday gallery image 2" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/09.png" alt="Kleenday gallery image 9" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/03.png" alt="Kleenday gallery image 3" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/01.png" alt="Kleenday gallery image 1" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/08.png" alt="Kleenday gallery image 8" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/06.png" alt="Kleenday gallery image 6" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/10.png" alt="Kleenday gallery image 10" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/13.png" alt="Kleenday gallery image 13" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/12.png" alt="Kleenday gallery image 12" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/16.png" alt="Kleenday gallery image 16" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/11.png" alt="Kleenday gallery image 11" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/17.png" alt="Kleenday gallery image 17" loading="lazy" decoding="async"></div>
+                    <div class="gallery-image"><img src="/assets/kleenday/18.png" alt="Kleenday gallery image 18" loading="lazy" decoding="async"></div>
+                </section>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

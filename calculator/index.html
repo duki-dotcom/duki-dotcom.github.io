@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculators | Duki's Scripts</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #1a1a2e;
@@ -45,7 +44,7 @@
             height: 600px;
             background: var(--primary-grad);
             filter: blur(150px);
-            border-radius: 50%;
+            border-radius: 0;
             opacity: 0.15;
             z-index: -1;
             animation: rotate 20s linear infinite;
@@ -71,7 +70,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 28px;
+            border-radius: 0;
             z-index: 100;
             padding: 40px 20px;
             display: flex;
@@ -103,7 +102,7 @@
 
         .nav-item {
             padding: 16px 20px;
-            border-radius: 16px;
+            border-radius: 0;
             text-decoration: none;
             color: var(--text-dim);
             transition: all 0.3s ease;
@@ -167,7 +166,7 @@
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
-            border-radius: 24px;
+            border-radius: 0;
             padding: 40px;
             text-decoration: none;
             color: inherit;
@@ -190,7 +189,7 @@
             width: 70px;
             height: 70px;
             background: rgba(255,255,255,0.05);
-            border-radius: 50%;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -240,6 +239,8 @@
         }
 
     </style>
+    <script src="/kleenday.js" defer></script>
+    <link rel="stylesheet" href="/retro.css">
 </head>
 <body>
 
@@ -261,7 +262,7 @@
             </a>
         </nav>
 
-        <div style="margin-top: auto; padding: 20px; background: rgba(0,0,0,0.2); border-radius: 15px; font-size: 0.75rem; color: var(--text-dim); text-align: center;">
+        <div style="margin-top: auto; padding: 20px; background: rgba(0,0,0,0.2); border-radius: 0; font-size: 0.75rem; color: var(--text-dim); text-align: center;">
             Unofficial hub for <strong>duki's scripts</strong><br>
             Game by Edd_E and Rylock
         </div>
@@ -293,29 +294,8 @@
             </a>
         </div>
     </main>
-
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         // Particles Config
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 60, density: { enable: true, value_area: 800 } },
-                color: { value: "#764ba2" },
-                shape: { type: "circle" },
-                opacity: { value: 0.2, random: true },
-                size: { value: 2, random: true },
-                line_linked: { enable: false },
-                move: { enable: true, speed: 0.8, direction: "top", random: true, straight: false, out_mode: "out" }
-            }
-        });
-
-        // Mouse Parallax Effect
-        const main = document.getElementById('main-section');
-        document.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth / 2 - e.pageX) / 80; // Slower movement for this page
-            const y = (window.innerHeight / 2 - e.pageY) / 80;
-            main.style.transform = `translateX(${x}px) translateY(${y}px)`;
-        });
     </script>
 </body>
 </html>

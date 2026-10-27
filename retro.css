@@ -1,0 +1,72 @@
+/* Compact, square site styling. Teto's peek animation keeps its original rules. */
+body { font-size: 14px; }
+a { text-decoration: underline; }
+.navbar { padding: 6px 20px; border-bottom: 1px solid #b52626; position: static; }
+.navbar .nav-links { flex-wrap: wrap; gap: 8px 0; }
+.navbar .nav-links li { margin: 0 18px 0 0; }
+.navbar .nav-links a { text-decoration: underline; transition: none; }
+.content { padding: 20px; max-width: 960px; box-sizing: border-box; }
+.hero, .about-grid { padding-top: 0; }
+.hero h1, .panel h1 { font-size: 28px; letter-spacing: normal; margin: 0 0 14px; }
+.hero p { font-size: 14px; line-height: 1.5; }
+.about-grid { grid-template-columns: minmax(0, 1fr) 280px; gap: 20px; }
+.panel { background: #e84b4b; border: 1px solid #b52626; padding: 16px; }
+.panel h2 { font-size: 20px; }
+.bg-canvas, .gradient-sphere, #particles-js { display: none; }
+body:has(.main-content) { background: #1a1a2e; font-family: Arial, Helvetica, sans-serif; }
+body:has(.main-content) * { font-family: Arial, Helvetica, sans-serif; }
+.sidebar { left: 16px; top: 16px; bottom: auto; width: 230px; padding: 16px; background: #222238; border: 1px solid #59596f; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; animation: none; }
+.logo-container { margin-bottom: 20px; }
+.logo-container img, .logo-container img:hover { transform: none; transition: none; }
+.sidebar .nav-links { gap: 4px; }
+.nav-item { padding: 8px; gap: 8px; text-decoration: underline; transition: none; }
+.nav-item:hover, .nav-item.active { background: #30304a; box-shadow: none; transform: none; border: 1px solid #59596f; }
+.sidebar > div:last-child { margin-top: 20px !important; padding: 10px !important; background: #1a1a2e !important; border: 1px solid #59596f; }
+.main-content { margin-left: 270px; padding: 20px; max-width: 1100px; opacity: 1; animation: none; }
+.hero-title, .page-title { font-size: 28px; color: #fff; background: none; -webkit-text-fill-color: currentColor; letter-spacing: normal; line-height: 1.2; margin-bottom: 12px; }
+.hero-subtitle, .page-desc { font-size: 14px; line-height: 1.5; margin-bottom: 20px; }
+.page-header { margin-bottom: 20px; }
+.tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; opacity: 1; animation: none; }
+.tool-card, .input-card, .result-card { padding: 16px; background: #222238; border: 1px solid #59596f; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none; }
+.tool-card { height: auto; text-decoration: underline; transition: none; }
+.tool-card:hover { background: #2a2a42; border-color: #85859b; box-shadow: none; transform: none; }
+.card-icon-circle, .tool-card:hover .card-icon-circle { width: auto; height: auto; background: none; font-size: 24px; margin-bottom: 12px; transform: none; transition: none; justify-content: flex-start; }
+.card-title { font-size: 20px; margin-bottom: 10px; }
+.card-desc { font-size: 14px; margin-bottom: 16px; }
+.calc-container { gap: 16px; }
+.form-group { margin-bottom: 16px; }
+.form-group label, .result-label { font-size: 12px; letter-spacing: normal; }
+.custom-input { padding: 8px; font-size: 14px; background: #161626; border-color: #59596f; transition: none; }
+.custom-input:focus { border-color: #aaaadd; box-shadow: none; }
+.btn-calc { padding: 9px 12px; font-size: 14px; background: #42426b; border: 1px solid #8888aa; box-shadow: none; transition: none; }
+.btn-calc:hover { background: #50507b; transform: none; box-shadow: none; }
+.cycle-btn, .toggle-container { background: #1a1a2e; border-color: #59596f; padding: 8px; transition: none; }
+.cycle-btn.selected, input:checked + .slider { background: #575782; }
+.result-value { font-size: 26px; }
+.result-item { margin-bottom: 16px; }
+@media (max-width: 800px) {
+    .content { padding: 16px; }
+    .navbar { padding: 6px 12px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-grid > div:last-child { max-width: 280px; }
+}
+@media (max-width: 900px) {
+    .sidebar { position: static; display: flex; width: auto; margin: 16px; }
+    .sidebar .logo-container, .sidebar > div:last-child { display: none; }
+    .sidebar .nav-links { flex-direction: row; flex-wrap: wrap; }
+    .main-content { margin-left: 0; padding: 16px; }
+    .tools-grid, .calc-container { grid-template-columns: 1fr; }
+}
+
+/* Neru's yellow palette is exclusive to Kleenday. */
+.theme-kleenday { background-color: #ffe45c; color: #332b09; }
+.theme-kleenday .navbar { background-color: #f5ce25; border-bottom-color: #a88a12; color: #332b09; }
+.theme-kleenday .nav-links a { color: #332b09; }
+.theme-kleenday .nav-links a:hover { color: #6b5100; }
+.theme-kleenday .panel { background: #fff09a; border-color: #a88a12; max-width: 620px; }
+.theme-kleenday .panel h2 { margin-top: 0; }
+.theme-kleenday .panel p { margin-bottom: 0; }
+
+.kleenday-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px; margin-top: 20px; align-items: start; }
+.kleenday-gallery .gallery-image { display: block; padding: 4px; border: 1px solid #a88a12; background: #fff09a; }
+.kleenday-gallery img { display: block; width: 100%; height: auto; }
